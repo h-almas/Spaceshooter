@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         float amtToMove = Time.deltaTime * speed;
         transform.Translate(Vector3.down * amtToMove, Space.World);
         
-        transform.Rotate(Vector3.forward, rotation, Space.Self);
+        transform.Rotate(Vector3.forward, rotation*Time.deltaTime, Space.Self);
         
     }
 

@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform shootPosition2;
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float shootDelaySec = 0.2f;
-    [SerializeField] private float respawnTime = 3f;
     [SerializeField] private int invincibilityTime = 1;
     [SerializeField] private ParticleSystem explosion;
 
@@ -26,7 +25,6 @@ public class Player : MonoBehaviour
     [SerializeField] private bool activateVerticalMovement = false;
     [SerializeField] private TMPro.TextMeshProUGUI scoreUI;
     [SerializeField] private TMPro.TextMeshProUGUI livesUI;
-    private bool invincible = false;
 
     private State playerState = State.Playing;
     private float timeSinceLastShot;
@@ -41,65 +39,62 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (playerState != State.Explosion)
+        #region Screen Wrap/Clamp
+
+        if (transform.position.x < -7.4f)
         {
-            #region Screen Wrap/Clamp
+            transform.position = new Vector3(7.4f, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > 7.4f)
+        {
+            transform.position = new Vector3(-7.4f, transform.position.y, transform.position.z);
+        }
 
-            if (transform.position.x < -7.4f)
-            {
-                transform.position = new Vector3(7.4f, transform.position.y, transform.position.z);
-            }
-            else if (transform.position.x > 7.4f)
-            {
-                transform.position = new Vector3(-7.4f, transform.position.y, transform.position.z);
-            }
+        if (transform.position.y < -4f)
+        {
+            transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
+        }
+        else if (transform.position.y > 4f)
+        {
+            transform.position = new Vector3(transform.position.x, 4f, transform.position.z);
+        }
 
-            if (transform.position.y < -4f)
-            {
-                transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
-            }
-            else if (transform.position.y > 4f)
-            {
-                transform.position = new Vector3(transform.position.x, 4f, transform.position.z);
-            }
+        #endregion
 
-            #endregion
+        if (playerState == State.Playing)
+        {
+            #region Shoot
 
-            if (playerState == State.Playing)
+            if (timeSinceLastShot >= shootDelaySec)
             {
-                #region Shoot
-
-                if (timeSinceLastShot >= shootDelaySec)
+                if (Input.GetKey(KeyCode.Space))
                 {
-                    if (Input.GetKey(KeyCode.Space))
-                    {
-                        Instantiate(projectilePrefab, shootPosition1.position, Quaternion.identity);
-                        Instantiate(projectilePrefab, shootPosition2.position, Quaternion.identity);
-                    }
-
-                    timeSinceLastShot = 0;
-                }
-                else
-                {
-                    timeSinceLastShot += Time.deltaTime;
+                    Instantiate(projectilePrefab, shootPosition1.position, Quaternion.identity);
+                    Instantiate(projectilePrefab, shootPosition2.position, Quaternion.identity);
                 }
 
-                #endregion
+                timeSinceLastShot = 0;
             }
-
-            #region Move
-
-            float amtToMoveHorizontally = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Horizontal");
-            transform.Translate(Vector3.right * amtToMoveHorizontally);
-
-            if (activateVerticalMovement)
+            else
             {
-                float amtToMoveVertically = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Vertical");
-                transform.Translate(Vector3.up * amtToMoveVertically);
+                timeSinceLastShot += Time.deltaTime;
             }
 
             #endregion
         }
+
+        #region Move
+
+        float amtToMoveHorizontally = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Horizontal");
+        transform.Translate(Vector3.right * amtToMoveHorizontally);
+
+        if (activateVerticalMovement)
+        {
+            float amtToMoveVertically = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Vertical");
+            transform.Translate(Vector3.up * amtToMoveVertically);
+        }
+
+        #endregion
 
         scoreUI.text = "Score: " + score;
         livesUI.text = "Lives: " + lives;
@@ -111,9 +106,9 @@ public class Player : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnHit();
-            StartCoroutine(Respawn());
-
             lives--;
+            StartCoroutine(Respawn());
+            
             Debug.Log("We've been hit by: " + other.name + " Lives left: " + lives);
 
             if (lives <= 0)
@@ -129,12 +124,10 @@ public class Player : MonoBehaviour
     {
         Instantiate(explosion, transform.position, transform.rotation);
         
-        playerState = State.Explosion;
+        playerState = State.Invincible;
         StartCoroutine(Blinking());
-        StartCoroutine(MoveToCenter());
-        
-        
-        yield return null;
+        yield return new WaitForSeconds(invincibilityTime);
+        playerState = State.Playing;
     }
 
     private IEnumerator MoveToCenter()
@@ -160,7 +153,7 @@ public class Player : MonoBehaviour
     {
         Renderer renderer = GetComponent<Renderer>();
         
-        while (playerState == State.Explosion)
+        while (playerState == State.Invincible)
         {
             renderer.enabled = false;
             yield return new WaitForSeconds(0.25f);
@@ -172,7 +165,6 @@ public class Player : MonoBehaviour
     private enum State
     {
         Playing,
-        Explosion,
         Invincible
     }
 }

@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     
     void Update()
     {
-        if(Input.anyKey)
+        if(Input.anyKeyDown)
             SceneManager.LoadScene(sceneName);
     }
 }

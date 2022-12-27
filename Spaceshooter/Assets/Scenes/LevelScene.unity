@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.059383903, g: 0.0609651, b: 0.08100224, a: 1}
+  m_IndirectSpecularColor: {r: 0.0593768, g: 0.06095708, b: 0.08099175, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5426,7 +5426,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 500
+  far clip plane: 50
   field of view: 60
   orthographic: 1
   orthographic size: 3.7
@@ -5500,28 +5500,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4068373912626513877, guid: 4ed03d04491ef504cb5d4a8f418a3db3, type: 3}
---- !u!114 &1081891405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081891394}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da28ae53993b0554aac404bb08564a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1957300289103269041, guid: 0dc2de659f753fd4ab3e2cf550701593, type: 3}
-  muzzleLeft: {fileID: 1410402460}
-  muzzleRight: {fileID: 1277583942}
-  playerSpeed: 12.5
-  shootDelaySec: 0.001
-  respawnTime: 0.5
-  invincibilityTime: 3
-  explosion: {fileID: 3405916974426206282, guid: 0170c5a3f8a5cb94e9caeafd560a6ca2, type: 3}
-  scoreUI: {fileID: 37942782}
-  livesUI: {fileID: 2073800549}
 --- !u!114 &1081891406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,10 +5515,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1957300289103269041, guid: 0dc2de659f753fd4ab3e2cf550701593, type: 3}
   shootPosition1: {fileID: 1410402460}
   shootPosition2: {fileID: 1277583942}
-  playerSpeed: 5
-  shootDelaySec: 0.01
-  respawnTime: 5
-  invincibilityTime: 5
+  playerSpeed: 10
+  shootDelaySec: 0.075
+  invincibilityTime: 3
   explosion: {fileID: 3405916974426206282, guid: 0170c5a3f8a5cb94e9caeafd560a6ca2, type: 3}
   activateVerticalMovement: 1
   scoreUI: {fileID: 37942782}
@@ -5564,7 +5541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minMaxSpeed: {x: 0.25, y: 0.75}
   minMaxScale: {x: 0.5, y: 1.5}
-  maxRotation: 5
+  maxRotation: 25
   explosion: {fileID: 3405916974426206282, guid: 0170c5a3f8a5cb94e9caeafd560a6ca2, type: 3}
 --- !u!135 &1102149953
 SphereCollider:
