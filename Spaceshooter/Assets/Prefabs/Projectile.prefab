@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5495194618197115933}
   m_Layer: 6
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,8 +125,8 @@ Transform:
   m_GameObject: {fileID: 8011286262171106905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.466, y: 0.408, z: 0}
-  m_LocalScale: {x: 0.049999997, y: 0.13887788, z: 0.06929223}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.01, y: 0.06, z: 0.013858446}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 401394134433969832}
   m_Father: {fileID: 0}
@@ -190,7 +190,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8011286262171106905}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -221,7 +221,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec1cceefdc75bd7448b702a406db6a3f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.053
   m_Pitch: 1
   Loop: 0
   Mute: 0

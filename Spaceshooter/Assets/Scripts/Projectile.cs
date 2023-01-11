@@ -32,8 +32,7 @@ public class Projectile : MonoBehaviour
         {
             
             Player.score += 10;
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.OnHit();
+            Destroy(gameObject);
         }
     }
 }

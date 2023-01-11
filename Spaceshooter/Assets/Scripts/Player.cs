@@ -14,17 +14,19 @@ public class Player : MonoBehaviour
     public static int score = 0;
     public static int lives = 3;
     [SerializeField] private Projectile projectilePrefab;
-    [SerializeField] private Transform shootPosition1;
-    [SerializeField] private Transform shootPosition2;
+    [SerializeField] private Transform muzzleLeft;
+    [SerializeField] private Transform muzzleRight;
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float shootDelaySec = 0.2f;
     [SerializeField] private int invincibilityTime = 1;
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private int nrProjectiles = 1;
 
 
     [SerializeField] private bool activateVerticalMovement = false;
     [SerializeField] private TMPro.TextMeshProUGUI scoreUI;
     [SerializeField] private TMPro.TextMeshProUGUI livesUI;
+    
 
     private State playerState = State.Playing;
     private float timeSinceLastShot;
@@ -69,8 +71,20 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    Instantiate(projectilePrefab, shootPosition1.position, Quaternion.identity);
-                    Instantiate(projectilePrefab, shootPosition2.position, Quaternion.identity);
+                    /*int tmpProjectiles = 0; //should be an attribute of this class. Set through powerups
+                    if(nrProjectiles+tmpProjectiles>1)
+                    {
+                        for(int i = 0; i<nrProjectiles+tmpProjectiles; i++){
+                            float projectileX = Mathf.Lerp(muzzleLeft.position.x, muzzleRight.position.x, Mathf.InverseLerp(0, nrProjectiles+tmpProjectiles-1, i));
+                            Instantiate(projectilePrefab, new Vector3(projectileX, muzzleLeft.position.y, muzzleLeft.position.z), Quaternion.identity);
+                        }
+                    }
+                    else 
+                        Instantiate(projectilePrefab, Vector3.Lerp(muzzleLeft.position, muzzleRight.position, 0.5f), Quaternion.identity);*/
+                    
+                    
+                    Instantiate(projectilePrefab, muzzleLeft.position, Quaternion.identity);
+                    Instantiate(projectilePrefab, muzzleRight.position, Quaternion.identity);
                 }
 
                 timeSinceLastShot = 0;
@@ -104,8 +118,6 @@ public class Player : MonoBehaviour
     {
         if (playerState == State.Playing && other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.OnHit();
             lives--;
             StartCoroutine(Respawn());
             
