@@ -77,12 +77,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy collideWith = other.GetComponent<Enemy>();
-        if (collideWith != null && _playerState == State.Playing)
+        if (other.CompareTag("Enemy") && _playerState == State.Playing)
         {
             Instantiate(hitExplosion, transform.position, other.transform.rotation);
             Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
-            collideWith.SetSpeedPosition();
             StartCoroutine(DestroyShip());
         }
     }

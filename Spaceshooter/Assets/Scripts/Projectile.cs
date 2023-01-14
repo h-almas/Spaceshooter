@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour
 {
-    public GameObject explosionPrefab;
     [SerializeField] private float projectileSpeed;
     private Camera _mainCamera;
     
@@ -32,24 +31,16 @@ public class Projectile : MonoBehaviour
         }
 
     }
+    
     void OnTriggerEnter(Collider other)
     {
-        Enemy collideWith = other.GetComponent<Enemy>();
-        if (collideWith != null)
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("We hit " + other.name);
-            Instantiate(explosionPrefab, other.transform.position, other.transform.rotation);
-            collideWith.IncreaseSpeed(0.5f);
-            collideWith.SetSpeedPosition();
-            Player.Score += 10;
-            Debug.Log("Your Score is now: " + Player.Score);
+            
             Destroy(gameObject);
         }
 
-        if (Player.Score == 150)
-        {
-            SceneManager.LoadScene(2);
-            Player.Score = 0;
-        }
+        
     }
 }
