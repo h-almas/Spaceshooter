@@ -75,8 +75,11 @@ public class Asteroid : MonoBehaviour, Enemy
         }
         if (other.CompareTag("Missed Trigger"))
         {
+            //TODO: the Text field should update itself with the static variable missedHit
+            //Prefabs can only save references to other prefabs
             _missedHit++;
-            missedText.text = "Missed Hits " + _missedHit;
+            /*missedText.text = "Missed Hits " + _missedHit;*/
+            
             Destroy(gameObject);
         }
     }
