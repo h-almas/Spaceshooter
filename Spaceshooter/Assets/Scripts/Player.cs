@@ -1,182 +1,141 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using Quaternion = UnityEngine.Quaternion;
-using Random = UnityEngine.Random;
-using Vector3 = UnityEngine.Vector3;
 
 public class Player : MonoBehaviour
 {
-    public static int score = 0;
-    public static int lives = 3;
-    [SerializeField] private Projectile projectilePrefab;
-    [SerializeField] private Transform muzzleLeft;
-    [SerializeField] private Transform muzzleRight;
-    [SerializeField] private float playerSpeed = 5f;
-    [SerializeField] private float shootDelaySec = 0.2f;
-    [SerializeField] private int invincibilityTime = 1;
-    [SerializeField] private ParticleSystem explosion;
-    [SerializeField] private int nrProjectiles = 1;
 
-
-    [SerializeField] private bool activateVerticalMovement = false;
-    [SerializeField] private TMPro.TextMeshProUGUI scoreUI;
-    [SerializeField] private TMPro.TextMeshProUGUI livesUI;
-    
-
-    private State playerState = State.Playing;
-    private float timeSinceLastShot;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        lives = 3;
-        score = 0;
-    }
-
-    void Update()
-    {
-        #region Screen Wrap/Clamp
-
-        if (transform.position.x < -7.4f)
-        {
-            transform.position = new Vector3(7.4f, transform.position.y, transform.position.z);
-        }
-        else if (transform.position.x > 7.4f)
-        {
-            transform.position = new Vector3(-7.4f, transform.position.y, transform.position.z);
-        }
-
-        if (transform.position.y < -4f)
-        {
-            transform.position = new Vector3(transform.position.x, -4f, transform.position.z);
-        }
-        else if (transform.position.y > 4f)
-        {
-            transform.position = new Vector3(transform.position.x, 4f, transform.position.z);
-        }
-
-        #endregion
-
-        if (playerState == State.Playing)
-        {
-            #region Shoot
-
-            if (timeSinceLastShot >= shootDelaySec)
-            {
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    /*int tmpProjectiles = 0; //should be an attribute of this class. Set through powerups
-                    if(nrProjectiles+tmpProjectiles>1)
-                    {
-                        for(int i = 0; i<nrProjectiles+tmpProjectiles; i++){
-                            float projectileX = Mathf.Lerp(muzzleLeft.position.x, muzzleRight.position.x, Mathf.InverseLerp(0, nrProjectiles+tmpProjectiles-1, i));
-                            Instantiate(projectilePrefab, new Vector3(projectileX, muzzleLeft.position.y, muzzleLeft.position.z), Quaternion.identity);
-                        }
-                    }
-                    else 
-                        Instantiate(projectilePrefab, Vector3.Lerp(muzzleLeft.position, muzzleRight.position, 0.5f), Quaternion.identity);*/
-                    
-                    
-                    Instantiate(projectilePrefab, muzzleLeft.position, Quaternion.identity);
-                    Instantiate(projectilePrefab, muzzleRight.position, Quaternion.identity);
-                }
-
-                timeSinceLastShot = 0;
-            }
-            else
-            {
-                timeSinceLastShot += Time.deltaTime;
-            }
-
-            #endregion
-        }
-
-        #region Move
-
-        float amtToMoveHorizontally = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Horizontal");
-        transform.Translate(Vector3.right * amtToMoveHorizontally);
-
-        if (activateVerticalMovement)
-        {
-            float amtToMoveVertically = playerSpeed * Time.deltaTime * Input.GetAxisRaw("Vertical");
-            transform.Translate(Vector3.up * amtToMoveVertically);
-        }
-
-        #endregion
-
-        scoreUI.text = "Score: " + score;
-        livesUI.text = "Lives: " + lives;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (playerState == State.Playing && other.CompareTag("Enemy"))
-        {
-            lives--;
-            StartCoroutine(Respawn());
-            
-            Debug.Log("We've been hit by: " + other.name + " Lives left: " + lives);
-
-            if (lives <= 0)
-            {
-                scoreUI.text = "Score: " + score;
-                livesUI.text = "Lives: " + lives;
-                SceneManager.LoadScene("GameOverScene");
-            }
-        }
-    }
-
-    public IEnumerator Respawn()
-    {
-        Instantiate(explosion, transform.position, transform.rotation);
-        
-        playerState = State.Invincible;
-        StartCoroutine(Blinking());
-        yield return new WaitForSeconds(invincibilityTime);
-        playerState = State.Playing;
-    }
-
-    private IEnumerator MoveToCenter()
-    {
-        Vector3 center = Camera.main.ViewportToWorldPoint(new Vector3(.5f, .5f, 10f));
-        float t = 0.1f;
-        Vector3 initialPosition = transform.position;
-        
-        while (Vector3.Distance(transform.position, center) > 0.01)
-        {
-            transform.position = Vector3.Lerp(initialPosition, center, t*Time.deltaTime);
-            t += 0.1f;
-            yield return new WaitForSeconds(0.05f);
-        
-        }
-        transform.position = center;
-        playerState = State.Playing;
-
-        yield return null;
-    }
-
-    private IEnumerator Blinking()
-    {
-        Renderer renderer = GetComponent<Renderer>();
-        
-        while (playerState == State.Invincible)
-        {
-            renderer.enabled = false;
-            yield return new WaitForSeconds(0.25f);
-            renderer.enabled = true;
-            yield return new WaitForSeconds(0.25f);
-        }
-    }
+    public static int Score = 0, Lives = 3;
+    private Quaternion _initialRotation;
+    private Camera _mainCamera;
 
     private enum State
     {
         Playing,
+        Explosion,
         Invincible
+    }
+    private State _playerState;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _initialRotation = transform.rotation;
+        _mainCamera = Camera.main;
+    }
+    
+    [SerializeField] private float playerSpeed = 0.2f;
+    [SerializeField] private float respawnTime = 3f;
+    [SerializeField] private float invincibleTime = 1.5f;
+    [SerializeField] private Vector2 tilt;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform weaponLocation;
+    public GameObject hitExplosion;
+    
+    public TMPro.TextMeshProUGUI scoreText;
+    public TMPro.TextMeshProUGUI livesText;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_playerState != State.Explosion)
+        {
+            float amtToMoveX = playerSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
+            transform.Translate(Vector3.right * amtToMoveX, Space.World);
+
+            float amtToMoveY = playerSpeed * Time.deltaTime * Input.GetAxis("Vertical");
+            transform.Translate(Vector3.up * amtToMoveY, Space.World);
+
+            Vector3 positionInViewSpace = _mainCamera.WorldToViewportPoint(transform.position);
+
+            if (positionInViewSpace.x < 0.0f)
+            {
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(1, positionInViewSpace.y, positionInViewSpace.z));
+            }
+            else if (positionInViewSpace.x > 1.0f)
+            {
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(0, positionInViewSpace.y, positionInViewSpace.z));
+            }
+
+            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(
+                tilt.y * Input.GetAxis("Vertical"), -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
+
+            if (Input.GetKeyDown("space"))
+            {
+                Instantiate(projectile, weaponLocation.position, transform.rotation);
+            }
+
+            scoreText.text = "Score: " + Score;
+            livesText.text = "Lives: " + Lives;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Enemy collideWith = other.GetComponent<Enemy>();
+        if (collideWith != null && _playerState == State.Playing)
+        {
+            Instantiate(hitExplosion, transform.position, other.transform.rotation);
+            Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
+            collideWith.SetSpeedPosition();
+            StartCoroutine(DestroyShip());
+        }
+    }
+
+    private IEnumerator DestroyShip()
+    {
+        _playerState = State.Explosion;
+        Instantiate(hitExplosion, transform.position, transform.rotation);
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        
+        Lives--;
+        yield return new WaitForSeconds(respawnTime);
+
+        if (Lives <= 0)
+        {
+            SceneManager.LoadScene(3);
+            Lives = 3;
+        }
+        else
+        {
+            GetComponent<Renderer>().enabled = true;
+            transform.position = new Vector3(0, -2, 0);
+            while (transform.position.y < 2)
+            {
+                float amtToMoVeY = Time.deltaTime * playerSpeed;
+                transform.position += Vector3.up * amtToMoVeY;
+                yield return null;
+            }
+            _playerState = State.Invincible;
+
+            GetComponent<Renderer>().enabled = true;
+
+            StartCoroutine(Blink());
+
+            yield return new WaitForSeconds(invincibleTime);
+
+            GetComponent<Collider>().enabled = true;
+            
+            _playerState = State.Playing;
+            StopCoroutine(Blink());
+            GetComponent<Renderer>().enabled = true;
+
+        }
+    }
+
+    private IEnumerator Blink()
+    {
+        while (_playerState == State.Invincible)
+        {
+            var renderer = GetComponent<Renderer>();
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 }

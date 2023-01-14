@@ -5,16 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Projectile
+  - Missed Trigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Projectile
-  - Enemy
+  - 
+  - 
   - 
   - 
   - 
