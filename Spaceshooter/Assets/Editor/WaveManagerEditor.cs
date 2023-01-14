@@ -69,7 +69,9 @@ public class WaveManagerEditor : Editor
         {
             waves.InsertArrayElementAtIndex(waveCount);
             wavePopupDisplayNames.Add("Wave " + (waveCount + 1));
+            waveIndex = waveCount;
             waveCount++;
+            
         }
         
         if (removeCurrentWave)
@@ -77,13 +79,14 @@ public class WaveManagerEditor : Editor
             waves.DeleteArrayElementAtIndex(waveIndex);
             waveCount--;
             wavePopupDisplayNames.RemoveAt(waves.arraySize);
-            waveIndex--;
+            waveIndex -= waveIndex == waveCount ? 1 : 0;
             if (waveIndex < 0) waveIndex = 0;
         }
         
         if (moveWaveUp)
         {
             waves.MoveArrayElement(waveIndex, waveIndex - 1);
+            waveIndex--;
         }
         
         
