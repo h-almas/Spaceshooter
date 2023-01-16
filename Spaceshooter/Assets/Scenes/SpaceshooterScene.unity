@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.001192811, g: 0.008676518, b: 0.03624302, a: 1}
+  m_IndirectSpecularColor: {r: 0.0011975453, g: 0.008681545, b: 0.03624288, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1073,20 +1073,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fee246e83cfd74f8b21ca299d3af14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - delayBetweenSpawns: 0.5
-    delayBeforeWaveWarning: 2
-    waveWarning: WAVE 1 INCOMING
-    delayBeforeWaveStart: 2
-    useSubwaves: 0
-    useCount: 1
-    enemyPrefabs:
-    - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
-    wavePower: 0
-    maxPowerOnScreen: 0
-    enemyCount: 15
-    maxEnemiesOnScreen: 5
-    subwaves: []
+  waveList:
+    waves: []
 --- !u!4 &1759574553
 Transform:
   m_ObjectHideFlags: 0

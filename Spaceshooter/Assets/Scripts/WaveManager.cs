@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class WaveManager : MonoBehaviour
 {
     
-    [SerializeField] private List<Wave> waves;
+    [SerializeField] public WaveList<Wave> waveList = new WaveList<Wave>();
 
 
     public void Start()
@@ -18,10 +18,10 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWaves()
     {
-        for(int i = 0; i<waves.Count; i++)
+        for(int i = 0; i<waveList.Count; i++)
         {
-            StartCoroutine(waves[i].StartWave());
-            yield return new WaitUntil(() => waves[i].HasEnded());
+            StartCoroutine(waveList[i].StartWave());
+            yield return new WaitUntil(() => waveList[i].HasEnded());
         }
     }
 
@@ -29,84 +29,67 @@ public class WaveManager : MonoBehaviour
     [Serializable]
     public class Wave
     {
-        [SerializeField] private float delayBetweenSpawns = .5f;
+        [SerializeField] protected float delayBetweenSpawns = .5f;
         [SerializeField] private float delayBeforeWaveWarning = 2.5f;
         [SerializeField] private string waveWarning = "Wave starting";
-        [SerializeField] private float delayBeforeWaveStart = 2.5f;
+        [SerializeField] protected float delayBeforeWaveStart = 2.5f;
         
-        [SerializeField] private bool useSubwaves = false;
-        [SerializeField] private bool useCount = false;
-        [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
+        [SerializeField] protected bool useCount = false;
+        [SerializeField] protected List<GameObject> enemyPrefabs = new List<GameObject>();
 
-        [SerializeField] private int wavePower;
-        [SerializeField] private int maxPowerOnScreen;
-        [SerializeField] private int enemyCount;
-        [SerializeField] private int maxEnemiesOnScreen;
-        [SerializeField] private List<Wave> subwaves;
-        private bool hasEnded = false;
+        [SerializeField] protected int wavePower;
+        [SerializeField] protected int maxPowerOnScreen;
+        [SerializeField] protected int enemyCount;
+        [SerializeField] protected int maxEnemiesOnScreen;
+        protected bool hasEnded = false;
         
 
         public IEnumerator StartWave()
         {
-            if(!useSubwaves){
-                yield return new WaitForSeconds(delayBeforeWaveWarning);
-                Debug.Log(waveWarning);
-                yield return new WaitForSeconds(delayBeforeWaveStart);
-            }
             
             
-            if (useSubwaves)
-            {
-                for (int i = 0; i < subwaves.Count; i++)
-                {
-                    Debug.Log("Subwave " + (i + 1) + " starting!");
-
-                    FindObjectOfType<WaveManager>().StartCoroutine(subwaves[i].StartWave());
-                    yield return new WaitUntil(() => subwaves[i].HasEnded());
-                }
-            }
-            else
-            {
-                int remaining = useCount ? enemyCount : wavePower;
-                int max = useCount ? maxEnemiesOnScreen : maxPowerOnScreen;
+            
+            
+            int remaining = useCount ? enemyCount : wavePower;
+            int max = useCount ? maxEnemiesOnScreen : maxPowerOnScreen;
                 
-                while (remaining > 0)
+            while (remaining > 0)
+            {
+
+                yield return new WaitForSeconds(delayBetweenSpawns);
+
+
+                var enemiesOnScreen = FindObjectsOfType<MonoBehaviour>().OfType<Enemy>();
+
+                int onScreen = 0;
+
+                foreach (Enemy enemy in enemiesOnScreen)
                 {
-
-                    yield return new WaitForSeconds(delayBetweenSpawns);
-
-
-                    var enemiesOnScreen = FindObjectsOfType<MonoBehaviour>().OfType<Enemy>();
-
-                    int onScreen = 0;
-
-                    foreach (Enemy enemy in enemiesOnScreen)
-                    {
-                        /*onScreen += useCount ? 1 : enemy.GetPower();*/
-                        onScreen++;
-                    }
-
-
-                    if (onScreen <= max)
-                    {
-                        int randomEnemyType = Random.Range(0, enemyPrefabs.Count);
-
-                        //TODO: .cost on non existing object leads to nullreferenceexception. Without the following code on screen power might exceed maxPower
-                        /*while (enemyPrefabs[randomEnemyType].GetComponent<Enemy>().cost + currentPowerOnScreen > maxPowerOnScreen)
-                        {
-                            randomEnemyType = Random.Range(0, enemyPrefabs.Count);
-                        }*/
-
-                        Enemy enemy = Instantiate(enemyPrefabs[randomEnemyType]).GetComponent<Enemy>();
-                        /*remaining -= useCount ? 1 : enemy.GetPower();*/
-                        remaining--;
-
-                    }
-                    
+                    /*onScreen += useCount ? 1 : enemy.GetPower();*/
+                    onScreen++;
                 }
 
-                yield return new WaitUntil(() => !FindObjectsOfType<MonoBehaviour>().OfType<Enemy>().Any());
+
+                if (onScreen <= max)
+                {
+                    int randomEnemyType = Random.Range(0, enemyPrefabs.Count);
+
+                    //TODO: .cost on non existing object leads to nullreferenceexception. Without the following code on screen power might exceed maxPower
+                    /*while (enemyPrefabs[randomEnemyType].GetComponent<Enemy>().cost + currentPowerOnScreen > maxPowerOnScreen)
+                    {
+                        randomEnemyType = Random.Range(0, enemyPrefabs.Count);
+                    }*/
+
+                    Enemy enemy = Instantiate(enemyPrefabs[randomEnemyType]).GetComponent<Enemy>();
+                    /*remaining -= useCount ? 1 : enemy.GetPower();*/
+                    remaining--;
+
+                }
+                    
             }
+
+            yield return new WaitUntil(() => !FindObjectsOfType<MonoBehaviour>().OfType<Enemy>().Any());
+            
             
             Debug.Log("Wave completed!");
             hasEnded = true;
@@ -116,5 +99,51 @@ public class WaveManager : MonoBehaviour
         {
             return hasEnded;
         }
+
+        
+    }
+
+    [Serializable]
+    public class WaveList<Wave> //Wrapper to make PropertyDrawer easier
+    {
+        [SerializeField] private List<Wave> waves;
+        
+        public Wave this[int i]
+        {
+            get => waves[i];
+            //set => waves[i] = value;
+        }
+
+        public int Count => waves.Count;
+
+        /*public void Insert(int index, Wave item)
+        {
+            waves.Insert(index, item);
+        }
+
+        public void RemoveAt(int index)
+        {
+            waves.RemoveAt(index);
+        }
+
+        public void Move(int from, int to)
+        {
+            Wave item = waves[from];
+            RemoveAt(from);
+            Insert(to, item);
+        }
+
+        public void clearSubwaves()
+        {
+            
+            if (typeof(Wave) is Wave)
+            {
+                foreach (Wave w in waves)
+                {
+                    w.ClearSubwaves();
+                }
+            }
+        }*/
+        
     }
 }
