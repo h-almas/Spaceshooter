@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBonus : MonoBehaviour
 {
-    private int _score = Player.Score;
     public static int stars = 0;
     private Quaternion _initialRotationBL;
     private Camera _mainCamera;
@@ -55,7 +54,7 @@ public class PlayerBonus : MonoBehaviour
             Instantiate(projectile, weaponLocation.position, transform.rotation);
         }
 
-        scoreText.text = "Score: " + _score;
+        scoreText.text = "Score: " + Player.Score;
         starsText.text = "Stars: " + stars;
     }
 }
