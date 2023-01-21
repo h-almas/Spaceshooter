@@ -15,6 +15,7 @@ public class Asteroid : MonoBehaviour, Enemy
     private static int _missedHit;
     public TMPro.TextMeshProUGUI missedText;
     public GameObject explosionPrefab;
+    [SerializeField] private int power;
 
     // Start is called before the first frame update
     void Start()
@@ -82,5 +83,10 @@ public class Asteroid : MonoBehaviour, Enemy
             
             Destroy(gameObject);
         }
+    }
+
+    public int GetPower()
+    {
+        return power;
     }
 }
