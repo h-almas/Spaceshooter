@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score = 0;
+        Lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
     }
