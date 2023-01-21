@@ -47,10 +47,14 @@ public class WaveManager : MonoBehaviour
         public IEnumerator StartWave()
         {
 
+            yield return new WaitForSeconds(delayBeforeWaveWarning);
+            
             if (waveWarning != "")
             {
                 Debug.Log(waveWarning);
             }
+            
+            yield return new WaitForSeconds(delayBeforeWaveStart);
             
             int remaining = useCount ? enemyCount : wavePower;
             int max = useCount ? maxEnemiesOnScreen : maxPowerOnScreen;
