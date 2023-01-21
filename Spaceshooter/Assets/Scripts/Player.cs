@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed = 0.2f;
     [SerializeField] private float respawnTime = 3f;
     [SerializeField] private float invincibleTime = 1.5f;
+    [SerializeField] private float timeBetweenShots = .5f;
+    private float timeSinceLastShot;
     [SerializeField] private Vector2 tilt;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform weaponLocation;
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
     {
         if (_playerState != State.Explosion)
         {
+            
             float amtToMoveX = playerSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
             transform.Translate(Vector3.right * amtToMoveX, Space.World);
 
@@ -61,13 +64,34 @@ public class Player : MonoBehaviour
                 transform.position =
                     _mainCamera.ViewportToWorldPoint(new Vector3(0, positionInViewSpace.y, positionInViewSpace.z));
             }
-
-            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(
-                tilt.y * Input.GetAxis("Vertical"), -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
-
-            if (Input.GetKeyDown("space"))
+            
+            if (positionInViewSpace.y < 0.0f)
             {
-                Instantiate(projectile, weaponLocation.position, transform.rotation);
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(positionInViewSpace.x, 0, positionInViewSpace.z));
+            }
+            else if (positionInViewSpace.y > 1.0f)
+            {
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(positionInViewSpace.x, 1, positionInViewSpace.z));
+            }
+
+            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(0, -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
+
+            if (_playerState == State.Playing)
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    if (timeSinceLastShot >= timeBetweenShots)
+                    {
+                        Instantiate(projectile, weaponLocation.position, transform.rotation);
+                        timeSinceLastShot = 0;
+                    }
+                    else
+                    {
+                        timeSinceLastShot += Time.deltaTime;
+                    }
+                }
             }
 
             scoreText.text = "Score: " + Score;
