@@ -46,9 +46,15 @@ public class WaveManager : MonoBehaviour
 
         public IEnumerator StartWave()
         {
+
+            yield return new WaitForSeconds(delayBeforeWaveWarning);
             
+            if (waveWarning != "")
+            {
+                Debug.Log(waveWarning);
+            }
             
-            
+            yield return new WaitForSeconds(delayBeforeWaveStart);
             
             int remaining = useCount ? enemyCount : wavePower;
             int max = useCount ? maxEnemiesOnScreen : maxPowerOnScreen;
@@ -65,8 +71,7 @@ public class WaveManager : MonoBehaviour
 
                 foreach (Enemy enemy in enemiesOnScreen)
                 {
-                    /*onScreen += useCount ? 1 : enemy.GetPower();*/
-                    onScreen++;
+                    onScreen += useCount ? 1 : enemy.GetPower();
                 }
 
 
@@ -81,8 +86,7 @@ public class WaveManager : MonoBehaviour
                     }*/
 
                     Enemy enemy = Instantiate(enemyPrefabs[randomEnemyType]).GetComponent<Enemy>();
-                    /*remaining -= useCount ? 1 : enemy.GetPower();*/
-                    remaining--;
+                    remaining -= useCount ? 1 : enemy.GetPower();
 
                 }
                     

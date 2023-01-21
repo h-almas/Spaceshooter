@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score = 0;
+        Lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
     }
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed = 0.2f;
     [SerializeField] private float respawnTime = 3f;
     [SerializeField] private float invincibleTime = 1.5f;
+    [SerializeField] private float timeBetweenShots = .5f;
+    private float timeSinceLastShot;
     [SerializeField] private Vector2 tilt;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform weaponLocation;
@@ -43,6 +47,7 @@ public class Player : MonoBehaviour
     {
         if (_playerState != State.Explosion)
         {
+            
             float amtToMoveX = playerSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
             transform.Translate(Vector3.right * amtToMoveX, Space.World);
 
@@ -61,13 +66,34 @@ public class Player : MonoBehaviour
                 transform.position =
                     _mainCamera.ViewportToWorldPoint(new Vector3(0, positionInViewSpace.y, positionInViewSpace.z));
             }
-
-            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(
-                tilt.y * Input.GetAxis("Vertical"), -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
-
-            if (Input.GetKeyDown("space"))
+            
+            if (positionInViewSpace.y < 0.0f)
             {
-                Instantiate(projectile, weaponLocation.position, transform.rotation);
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(positionInViewSpace.x, 0, positionInViewSpace.z));
+            }
+            else if (positionInViewSpace.y > 1.0f)
+            {
+                transform.position =
+                    _mainCamera.ViewportToWorldPoint(new Vector3(positionInViewSpace.x, 1, positionInViewSpace.z));
+            }
+
+            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(0, -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
+
+            if (_playerState == State.Playing)
+            {
+                if (timeSinceLastShot >= timeBetweenShots)
+                {
+                    if (Input.GetKey(KeyCode.Space)){
+                        Instantiate(projectile, weaponLocation.position, transform.rotation);
+                        timeSinceLastShot = 0;
+                    }
+                }
+                else
+                {
+                    timeSinceLastShot += Time.deltaTime;
+                }
+                
             }
 
             scoreText.text = "Score: " + Score;
@@ -89,8 +115,10 @@ public class Player : MonoBehaviour
     {
         _playerState = State.Explosion;
         Instantiate(hitExplosion, transform.position, transform.rotation);
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        var renderer = GetComponent<Renderer>();
+        var collider = GetComponent<Collider>();
+        renderer.enabled = false;
+        collider.enabled = false;
         
         Lives--;
         yield return new WaitForSeconds(respawnTime);
@@ -102,7 +130,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
             transform.position = new Vector3(0, -2, 0);
             while (transform.position.y < 2)
             {
@@ -112,17 +140,17 @@ public class Player : MonoBehaviour
             }
             _playerState = State.Invincible;
 
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
 
             StartCoroutine(Blink());
 
             yield return new WaitForSeconds(invincibleTime);
 
-            GetComponent<Collider>().enabled = true;
+            collider.enabled = true;
             
             _playerState = State.Playing;
             StopCoroutine(Blink());
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
 
         }
     }

@@ -12,9 +12,8 @@ public class Asteroid : MonoBehaviour, Enemy
     private float _speed;
     [SerializeField] private Vector2 minMaxScale;
 
-    private static int _missedHit;
-    public TMPro.TextMeshProUGUI missedText;
     public GameObject explosionPrefab;
+    [SerializeField] private int power;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +29,6 @@ public class Asteroid : MonoBehaviour, Enemy
         
         Vector3 amtToRotate = Time.deltaTime * _rotationSpeed;
         transform.Rotate(amtToRotate);
-
-        if(Camera.main.WorldToViewportPoint(transform.position).y < -0.1f)
-        {
-            SetSpeedPosition();
-        }
     }
     public void SetSpeedPosition()
     {
@@ -54,33 +48,21 @@ public class Asteroid : MonoBehaviour, Enemy
 
     }
 
-    public void IncreaseSpeed(float increment)
-    {
-        if (minMaxSpeed.y > 10f) return;
-        minMaxSpeed.x += increment;
-        minMaxSpeed.y += increment;
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerProjectile"))
         {
             Instantiate(explosionPrefab, other.transform.position, other.transform.rotation);
-            IncreaseSpeed(0.5f);
-            SetSpeedPosition();
-            Player.Score += 10;
-            Debug.Log("Your Score is now: " + Player.Score);
             Destroy(gameObject);
         }
         if (other.CompareTag("Missed Trigger"))
         {
-            //TODO: the Text field should update itself with the static variable missedHit
-            //Prefabs can only save references to other prefabs
-            _missedHit++;
-            /*missedText.text = "Missed Hits " + _missedHit;*/
-            
             Destroy(gameObject);
         }
+    }
+
+    public int GetPower()
+    {
+        return power;
     }
 }

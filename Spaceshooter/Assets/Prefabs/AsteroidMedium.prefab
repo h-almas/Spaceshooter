@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5770578389204760730}
   - component: {fileID: 5770578389204760731}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: AsteroidMedium
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,3 +115,4 @@ MonoBehaviour:
   minMaxScale: {x: 5, y: 7}
   missedText: {fileID: 0}
   explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
+  power: 10
