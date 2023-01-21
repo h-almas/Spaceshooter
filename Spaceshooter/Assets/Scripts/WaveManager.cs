@@ -46,9 +46,11 @@ public class WaveManager : MonoBehaviour
 
         public IEnumerator StartWave()
         {
-            
-            
-            
+
+            if (waveWarning != "")
+            {
+                Debug.Log(waveWarning);
+            }
             
             int remaining = useCount ? enemyCount : wavePower;
             int max = useCount ? maxEnemiesOnScreen : maxPowerOnScreen;
