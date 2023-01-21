@@ -80,18 +80,18 @@ public class Player : MonoBehaviour
 
             if (_playerState == State.Playing)
             {
-                if (Input.GetKey(KeyCode.Space))
+                if (timeSinceLastShot >= timeBetweenShots)
                 {
-                    if (timeSinceLastShot >= timeBetweenShots)
-                    {
+                    if (Input.GetKey(KeyCode.Space)){
                         Instantiate(projectile, weaponLocation.position, transform.rotation);
                         timeSinceLastShot = 0;
                     }
-                    else
-                    {
-                        timeSinceLastShot += Time.deltaTime;
-                    }
                 }
+                else
+                {
+                    timeSinceLastShot += Time.deltaTime;
+                }
+                
             }
 
             scoreText.text = "Score: " + Score;
