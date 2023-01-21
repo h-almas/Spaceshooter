@@ -1087,7 +1087,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveList:
-    waves: []
+    waves:
+    - delayBetweenSpawns: 0.5
+      delayBeforeWaveWarning: 2
+      waveWarning: WAVE 1 INCOMING
+      delayBeforeWaveStart: 1
+      useCount: 0
+      enemyPrefabs:
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      wavePower: 200
+      maxPowerOnScreen: 25
+      enemyCount: 0
+      maxEnemiesOnScreen: 0
+    - delayBetweenSpawns: 0.75
+      delayBeforeWaveWarning: 2
+      waveWarning: WAVE 2 INCOMING
+      delayBeforeWaveStart: 1
+      useCount: 0
+      enemyPrefabs:
+      - {fileID: 5770578389204760733, guid: cdf414eb260136e42ac75bfb92dc21d0, type: 3}
+      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      wavePower: 200
+      maxPowerOnScreen: 30
+      enemyCount: 0
+      maxEnemiesOnScreen: 0
 --- !u!4 &1759574553
 Transform:
   m_ObjectHideFlags: 0
@@ -6262,6 +6286,10 @@ PrefabInstance:
       propertyPath: weaponLocation
       value: 
       objectReference: {fileID: 1188406992}
+    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_RootOrder
       value: 2

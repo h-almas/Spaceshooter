@@ -113,8 +113,10 @@ public class Player : MonoBehaviour
     {
         _playerState = State.Explosion;
         Instantiate(hitExplosion, transform.position, transform.rotation);
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        var renderer = GetComponent<Renderer>();
+        var collider = GetComponent<Collider>();
+        renderer.enabled = false;
+        collider.enabled = false;
         
         Lives--;
         yield return new WaitForSeconds(respawnTime);
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
             transform.position = new Vector3(0, -2, 0);
             while (transform.position.y < 2)
             {
@@ -136,17 +138,17 @@ public class Player : MonoBehaviour
             }
             _playerState = State.Invincible;
 
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
 
             StartCoroutine(Blink());
 
             yield return new WaitForSeconds(invincibleTime);
 
-            GetComponent<Collider>().enabled = true;
+            collider.enabled = true;
             
             _playerState = State.Playing;
             StopCoroutine(Blink());
-            GetComponent<Renderer>().enabled = true;
+            renderer.enabled = true;
 
         }
     }
