@@ -53,6 +53,7 @@ public class Asteroid : MonoBehaviour, Enemy
         if (other.CompareTag("PlayerProjectile"))
         {
             Instantiate(explosionPrefab, other.transform.position, other.transform.rotation);
+            Player.Score += power;
             Destroy(gameObject);
         }
         if (other.CompareTag("Missed Trigger"))
