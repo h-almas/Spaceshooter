@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("We hit " + other.name);
-            Player.Score += other.GetComponent<Enemy>().GetPower();
             Destroy(gameObject);
         }
     }
