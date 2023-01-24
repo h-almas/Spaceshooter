@@ -19,7 +19,7 @@ public class EnemyShip : MonoBehaviour, Enemy
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), 1.25f, 10) );
+        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(-.25f, 1.25f), 1.25f, 10) );
         transform.position = pos;
         StartCoroutine(MoveToCenterOfPath());
     }
