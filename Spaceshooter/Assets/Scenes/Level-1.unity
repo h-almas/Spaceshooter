@@ -1150,37 +1150,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149393568}
   m_CullTransparentMesh: 1
---- !u!1 &1188406991
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1188406992}
-  m_Layer: 0
-  m_Name: GunPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1188406992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188406991}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.08, z: 4.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 543450652582413404}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1756177825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6484,11 +6453,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129012188}
   m_CullTransparentMesh: 1
---- !u!4 &543450652582413404 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-  m_PrefabInstance: {fileID: 2985105157444060597}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2985105157444060597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6496,25 +6460,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 471167794511253514, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -8051436459753069580, guid: 7434f156f1a25df4596be6564fe60b9d, type: 3}
-    - target: {fileID: 1821806909406957132, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -8051436459753069580, guid: 7434f156f1a25df4596be6564fe60b9d, type: 3}
     - target: {fileID: 2714633196958554963, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985105157925304705, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985105157925304705, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: livesText
@@ -6524,53 +6472,9 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1756177827}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: invincible
-      value: 
-      objectReference: {fileID: 9017915105285750450, guid: 87aaa256ea6948e48afeaf12d31d9417, type: 3}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: missedText
-      value: 
-      objectReference: {fileID: 1149393570}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: playerSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: respawnTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: hitExplosion
-      value: 
-      objectReference: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: invincibleTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: weaponLocation
-      value: 
-      objectReference: {fileID: 1188406992}
-    - target: {fileID: 2985105157925304730, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: timeBetweenShots
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6578,7 +6482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6612,17 +6516,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516174684925803142, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_StitchLightmapSeams
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516174684925803142, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d58bf68b17f9a4240aaeb5c200c9a12c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
