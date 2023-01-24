@@ -163,6 +163,6 @@ MonoBehaviour:
   muzzle: {fileID: 6520333726888897966}
   explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
   projectilePrefab: {fileID: 284881752209583065, guid: b8bbff966d35ef34aa657e8c517d1611, type: 3}
-  power: 20
+  power: 30
   speed: 5
   timeBetweenShots: 0.75
