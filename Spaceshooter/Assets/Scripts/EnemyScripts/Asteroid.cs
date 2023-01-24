@@ -56,10 +56,6 @@ public class Asteroid : MonoBehaviour, Enemy
             Player.Score += power;
             Destroy(gameObject);
         }
-        if (other.CompareTag("Missed Trigger"))
-        {
-            Destroy(gameObject);
-        }
     }
 
     public int GetPower()

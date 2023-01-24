@@ -14,6 +14,7 @@ public class MissedEnemies : MonoBehaviour
         {
             missedEnemies++;
             missedText.text = "Missed Hits " + missedEnemies;
+            Destroy(other.gameObject);
         }
     }
 }

@@ -13,13 +13,15 @@ public class EnemyShip : MonoBehaviour, Enemy
     [SerializeField] private int power = 20;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float timeBetweenShots = .5f;
+    private Camera cam;
     private float timeSinceLastShot;
     private Vector3 direction = Vector3.right;
     
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(-.25f, 1.25f), 1.25f, 10) );
+        cam = Camera.main;
+        Vector3 pos = cam.ViewportToWorldPoint(new Vector3(Random.Range(-.25f, 1.25f), 1.25f, 10) );
         transform.position = pos;
         StartCoroutine(MoveToCenterOfPath());
     }
@@ -29,12 +31,15 @@ public class EnemyShip : MonoBehaviour, Enemy
     {
         #region Move
 
-        Vector3 posInView = Camera.main.WorldToViewportPoint(transform.position);
+        Vector3 posInView = cam.WorldToViewportPoint(transform.position);
 
-        if (posInView.x > 1 ||
-            posInView.x < 0)
+        if (posInView.x > 1)
         {
-            direction *= -1;
+            direction = Vector3.right;
+        }
+        else if (posInView.x < 0)
+        {
+            direction = Vector3.left;
         }
             
         transform.Translate(direction*(speed*Time.deltaTime));
@@ -58,7 +63,7 @@ public class EnemyShip : MonoBehaviour, Enemy
 
     private IEnumerator MoveToCenterOfPath()
     {
-        float centerY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.75f, 0)).y;
+        float centerY = cam.ViewportToWorldPoint(new Vector3(0, 0.75f, 0)).y;
         float originY = transform.position.y;
         float t = 0;
         float speed = 0.5f;
