@@ -50,9 +50,9 @@ public class Asteroid : MonoBehaviour, Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerProjectile"))
+        if (other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
-            Instantiate(explosionPrefab, other.transform.position, other.transform.rotation);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
             Player.Score += power;
             Destroy(gameObject);
         }

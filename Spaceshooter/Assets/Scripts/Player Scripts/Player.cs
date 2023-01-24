@@ -103,9 +103,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") && _playerState == State.Playing)
+        if (_playerState == State.Playing && (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile")))
         {
-            Instantiate(hitExplosion, transform.position, other.transform.rotation);
+            Instantiate(hitExplosion, transform.position, transform.rotation);
             Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
             StartCoroutine(DestroyShip());
         }

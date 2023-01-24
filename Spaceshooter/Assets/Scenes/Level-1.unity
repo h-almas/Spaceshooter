@@ -1095,8 +1095,8 @@ MonoBehaviour:
       delayBeforeWaveStart: 1
       useCount: 0
       enemyPrefabs:
-      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
       - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
       wavePower: 200
       maxPowerOnScreen: 25
       enemyCount: 0
