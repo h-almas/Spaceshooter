@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed;
 
     void Update()
     {
         float amtToMove = projectileSpeed * Time.deltaTime;
-        transform.Translate(Vector3.up * amtToMove);
+        transform.Translate(Vector3.down * amtToMove);
     }
 
     private void OnBecameInvisible()
@@ -17,9 +17,8 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
         {
-            Debug.Log("We hit " + other.name);
             Destroy(gameObject);
         }
     }
