@@ -1089,16 +1089,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveList:
     waves:
-    - delayBetweenSpawns: 0.5
+    - delayBetweenSpawns: 1
       delayBeforeWaveWarning: 2
       waveWarning: WAVE 1 INCOMING
       delayBeforeWaveStart: 1
       useCount: 0
       enemyPrefabs:
-      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      - {fileID: 22709267512060589, guid: cc8a004fae73ae0448bc94445688128d, type: 3}
       - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
-      wavePower: 200
-      maxPowerOnScreen: 25
+      wavePower: 500
+      maxPowerOnScreen: 75
       enemyCount: 0
       maxEnemiesOnScreen: 0
     - delayBetweenSpawns: 0.75

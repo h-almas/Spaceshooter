@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
                     _mainCamera.ViewportToWorldPoint(new Vector3(positionInViewSpace.x, 1, positionInViewSpace.z));
             }
 
-            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(-90, -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
+            transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(0, -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
 
             if (_playerState == State.Playing)
             {
