@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2985105157925304705}
   - component: {fileID: 2985105157925304730}
   m_Layer: 0
-  m_Name: SimpleShip
+  m_Name: PlayerShip
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
