@@ -34,7 +34,7 @@ public class PlayerBonus : MonoBehaviour
         transform.Translate(Vector3.up * amtToMoveY, Space.World);
 
         transform.rotation = Quaternion.Slerp(_initialRotationBL, Quaternion.Euler
-            (0,90, -90 + tilt.y * Input.GetAxis("Vertical")), 1);
+            (tilt.x * Input.GetAxis("Vertical"),0, -90), 1);
 
         if (Input.GetKeyDown("space"))
         {

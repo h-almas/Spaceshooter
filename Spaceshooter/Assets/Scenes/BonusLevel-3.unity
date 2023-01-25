@@ -14940,6 +14940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1188406992, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 471167794511253514, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -15038,19 +15042,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5000007
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.49999934
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.49999934
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5000007
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15058,7 +15062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -15094,7 +15098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  tilt: {x: 0, y: 30}
+  tilt: {x: 35, y: 0}
   projectile: {fileID: 284881752209583065, guid: 2ad5f8f38e8c0a94aa985bccbf0f0eab, type: 3}
   weaponLocation: {fileID: 829987548}
   scoreText: {fileID: 1662938014}
