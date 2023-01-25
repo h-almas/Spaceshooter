@@ -8,27 +8,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    public static int Lives = 3;
+    private static int Lives = 3;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
-
-    private enum State
-    {
-        Playing,
-        Explosion,
-        Invincible
-    }
-    private State _playerState;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        PlayerPrefs.SetInt("Score", 0);
-        Lives = 3;
-        _initialRotation = transform.rotation;
-        _mainCamera = Camera.main;
-    }
-    
     [SerializeField] private float playerSpeed = 0.2f;
     [SerializeField] private float respawnTime = 3f;
     [SerializeField] private float invincibleTime = 1.5f;
@@ -38,16 +20,63 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform weaponLocation;
     public GameObject hitExplosion;
-    
+    private List<KeyCode> activateGodMode = new List<KeyCode>();
+
+    private KeyCode[] godModeRequiredSequence =
+    {
+        KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow,
+        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A
+    };
+
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI livesText;
+    
+    private enum State
+    {
+        Playing,
+        Explosion,
+        Invincible,
+        Godmode
+    }
+    private State _playerState;
+    
 
-    // Update is called once per frame
+
+    
+    void Start()
+    {
+        PlayerPrefs.SetInt("Score", 0);
+        Lives = 3;
+        _initialRotation = transform.rotation;
+        _mainCamera = Camera.main;
+    }
+    
+
+
     void Update()
     {
+        if (_playerState != State.Godmode)
+        {
+            if (Input.GetKeyDown(godModeRequiredSequence[activateGodMode.Count]))
+            {
+                activateGodMode.Add(godModeRequiredSequence[activateGodMode.Count]);
+               
+                if (activateGodMode.Count == godModeRequiredSequence.Length)
+                {
+                    activateGodMode.Clear();
+                    Debug.Log("Initiating GodMode");
+                    _playerState = State.Godmode;
+                    
+                }
+            }
+            else if(Input.anyKeyDown)
+            {
+                activateGodMode.Clear();
+            }
+        }
+        
         if (_playerState != State.Explosion)
         {
-            
             float amtToMoveX = playerSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
             transform.Translate(Vector3.right * amtToMoveX, Space.World);
 
@@ -80,7 +109,7 @@ public class Player : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(_initialRotation, Quaternion.Euler(0, -tilt.x * Input.GetAxis("Horizontal"), 0), 1);
 
-            if (_playerState == State.Playing)
+            if (_playerState != State.Invincible)
             {
                 if (timeSinceLastShot >= timeBetweenShots)
                 {
@@ -91,7 +120,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    timeSinceLastShot += Time.deltaTime;
+                    timeSinceLastShot += Time.deltaTime * (_playerState==State.Godmode ? 4 : 1);
                 }
                 
             }
@@ -106,8 +135,11 @@ public class Player : MonoBehaviour
         if (_playerState == State.Playing && (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile")))
         {
             Instantiate(hitExplosion, transform.position, transform.rotation);
-            Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
-            StartCoroutine(DestroyShip());
+            if (_playerState != State.Godmode)
+            {
+                Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
+                StartCoroutine(DestroyShip());
+            }
         }
     }
 
