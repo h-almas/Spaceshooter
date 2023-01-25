@@ -29,7 +29,7 @@ public class KamikazeRocket : MonoBehaviour, Enemy
         if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
+            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + power);
             Destroy(gameObject);
         }
     }

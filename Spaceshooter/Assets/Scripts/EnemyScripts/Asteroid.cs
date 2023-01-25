@@ -15,13 +15,11 @@ public class Asteroid : MonoBehaviour, Enemy
     public GameObject explosionPrefab;
     [SerializeField] private int power;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetSpeedPosition();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float amtToMove = Time.deltaTime * _speed;
@@ -53,7 +51,7 @@ public class Asteroid : MonoBehaviour, Enemy
         if (other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
+            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + power);
             Destroy(gameObject);
         }
     }

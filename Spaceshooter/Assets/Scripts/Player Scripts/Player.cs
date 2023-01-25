@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    public static int Score = 0, Lives = 3;
+    public static int Lives = 3;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Score = 0;
+        PlayerPrefs.SetInt("Score", 0);
         Lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
                 
             }
 
-            scoreText.text = "Score: " + Score;
+            scoreText.text = "Score: " + PlayerPrefs.GetInt("Score", 0);
             livesText.text = "Lives: " + Lives;
         }
     }

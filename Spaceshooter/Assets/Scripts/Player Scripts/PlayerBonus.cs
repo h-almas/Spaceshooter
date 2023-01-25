@@ -41,7 +41,7 @@ public class PlayerBonus : MonoBehaviour
             Instantiate(projectile, weaponLocation.position, transform.rotation);
         }
 
-        scoreText.text = "Score: " + Player.Score;
+        scoreText.text = "Score: " + PlayerPrefs.GetInt("Score", 0);
         starsText.text = "Stars: " + stars;
     }
 }

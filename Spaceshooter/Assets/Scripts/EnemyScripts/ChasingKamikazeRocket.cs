@@ -37,12 +37,6 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
 
     }
 
-    private void OnBecameInvisible()
-    {
-        //TODO: This does not count as a missed Hit
-        Destroy(gameObject);
-    }
-
     public int GetPower()
     {
         return power;
@@ -53,18 +47,8 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
         if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
+            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + power);
             Destroy(gameObject);
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        var towardsTarget = target.position - transform.position;
-        var facing = transform.up*-1;
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position, transform.position+towardsTarget);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position+facing*10);
     }
 }

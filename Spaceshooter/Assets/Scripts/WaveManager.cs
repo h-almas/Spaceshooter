@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
@@ -23,6 +24,15 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(waveList[i].StartWave());
             yield return new WaitUntil(() => waveList[i].HasEnded());
         }
+        
+        //Start EndSequence here
+
+        yield return new WaitForSeconds(3);
+
+        PlayerPrefs.SetInt("OverallScore", PlayerPrefs.GetInt("OverallScore",0) + PlayerPrefs.GetInt("Score",0));
+        PlayerPrefs.SetInt("Score", 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 
 

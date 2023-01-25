@@ -87,7 +87,7 @@ public class EnemyShip : MonoBehaviour, Enemy
         if (other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
+            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + power);
             Destroy(gameObject);
         }
     }
