@@ -15,6 +15,8 @@ public class PlayerBonus : MonoBehaviour
 
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI starsText;
+    public TMPro.TextMeshProUGUI scoreTextFinal;
+    public TMPro.TextMeshProUGUI starsTextFinal;
     
     
     // Start is called before the first frame update
@@ -43,5 +45,7 @@ public class PlayerBonus : MonoBehaviour
 
         scoreText.text = "Score: " + PlayerPrefs.GetInt("Score", 0);
         starsText.text = "Stars: " + stars;
+        scoreTextFinal.text = "SCORE: " + PlayerPrefs.GetInt("Score", 0);
+        starsTextFinal.text = "STARS: " + stars;
     }
 }
