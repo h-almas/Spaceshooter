@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class NextSceneButton : MonoBehaviour
 {
-    public void NextScene(int sceneIndex)
+    public void NextScene()
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(0);
     }
 }

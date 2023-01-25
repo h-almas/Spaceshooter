@@ -5,11 +5,35 @@ using UnityEngine;
 
 public class WindowTrigger : MonoBehaviour
 {
+    [SerializeField] private Transform statsWindow;
+    [SerializeField] private Transform playStats;
+    public GameObject score;
+    public GameObject stars;
+    private void Awake()
+    {
+        statsWindow.localScale = Vector2.zero;
+    }
+
+    void Start()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("xD");
+            playStats.LeanScale(Vector2.zero, 0.8f);
+            statsWindow.LeanScale(Vector2.one, 0.8f);
+            StartCoroutine(ShowStats());
         }
+    }
+
+    private IEnumerator ShowStats()
+    {
+        yield return new WaitForSeconds(2);
+        score.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        stars.SetActive(true);
     }
 }
