@@ -28,11 +28,7 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
         var angle = Vector3.SignedAngle(facing, towardsTarget, Vector3.forward);
         if (Mathf.Abs(angle) < maxAngle)
             transform.Rotate(Vector3.forward, angle * steeringSpeed * Time.deltaTime);
-            
-        Debug.Log(angle);
-            
         
-
         transform.Translate(Vector3.down*(speed*Time.deltaTime), Space.Self);
 
     }
