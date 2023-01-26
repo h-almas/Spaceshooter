@@ -43,7 +43,7 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
         if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
-            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + power);
+            Player.Score += power;
             Destroy(gameObject);
         }
     }

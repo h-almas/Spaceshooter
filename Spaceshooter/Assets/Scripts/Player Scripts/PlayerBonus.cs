@@ -22,6 +22,7 @@ public class PlayerBonus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player.Score = 0;
         _initialRotationBL = transform.rotation;
         _mainCamera = Camera.main;
     }
@@ -43,9 +44,9 @@ public class PlayerBonus : MonoBehaviour
             Instantiate(projectile, weaponLocation.position, transform.rotation);
         }
 
-        scoreText.text = "Score: " + PlayerPrefs.GetInt("Score", 0);
+        scoreText.text = "Score: " + Player.Score;
         starsText.text = "Stars: " + stars;
-        scoreTextFinal.text = "SCORE: " + PlayerPrefs.GetInt("Score", 0);
+        scoreTextFinal.text = "SCORE: " + Player.Score;
         starsTextFinal.text = "STARS: " + stars;
     }
 }

@@ -29,8 +29,7 @@ public class WaveManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
-        PlayerPrefs.SetInt("OverallScore", PlayerPrefs.GetInt("OverallScore",0) + PlayerPrefs.GetInt("Score",0));
-        PlayerPrefs.SetInt("Score", 0);
+        //PlayerPrefs.SetInt("OverallScore", PlayerPrefs.GetInt("OverallScore",0) + Player.Score);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }

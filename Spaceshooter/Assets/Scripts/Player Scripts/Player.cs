@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
 
     private static int Lives = 3;
+    public static int Score = 0;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
     [SerializeField] private float playerSpeed = 0.2f;
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        PlayerPrefs.SetInt("Score", 0);
+        Score = 0;
         Lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour
                 
             }
 
-            scoreText.text = "Score: " + PlayerPrefs.GetInt("Score", 0);
+            scoreText.text = "Score: " + Score;
             livesText.text = "Lives: " + Lives;
         }
     }

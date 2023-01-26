@@ -30,7 +30,7 @@ public class PointStar : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Instantiate(disappear, transform.position, transform.rotation);
-            PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score", 0) + 2);
+            Player.Score += 2;
             PlayerBonus.stars++;
             Destroy(gameObject);
         }
