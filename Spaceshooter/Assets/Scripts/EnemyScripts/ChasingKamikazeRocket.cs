@@ -12,6 +12,8 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float steeringSpeed = 5;
     [SerializeField] private float maxAngle = 45f;
+    [SerializeField] private int hp = 1;
+    private bool dead = false;
     private Transform target;
     
     void Start()
@@ -40,11 +42,16 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
+        if (!dead && other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
+            hp--;
+            if (hp == 0)
+            {
+                dead = true;
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Player.Score += power;
+                Destroy(gameObject);
+            }
         }
     }
 }

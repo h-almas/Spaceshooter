@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
             Instantiate(hitExplosion, transform.position, transform.rotation);
             if (_playerState != State.Godmode)
             {
-                Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
+                //Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
                 StartCoroutine(DestroyShip());
             }
         }
@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
 
         if (Lives <= 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Lose Screen");
             Lives = 3;
         }
         else

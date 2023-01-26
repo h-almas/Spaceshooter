@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.016286042, g: 0.009598401, b: 0.018751616, a: 1}
+  m_IndirectSpecularColor: {r: 0.016279748, g: 0.00960289, b: 0.018744888, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111629276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.550385, y: 3.840217, z: -0.1515507}
+  m_LocalPosition: {x: -5.550385, y: 1.7, z: -0.1515507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -530,7 +530,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &783172615
 GameObject:
@@ -1510,28 +1510,63 @@ MonoBehaviour:
   waveList:
     waves:
     - delayBetweenSpawns: 0.75
-      delayBeforeWaveWarning: 0
-      waveWarning: WAVE 2 INCOMING
-      delayBeforeWaveStart: 1
-      useCount: 0
-      enemyPrefabs:
-      - {fileID: 22709267512060589, guid: 461ff907bab12b541b2866a31e7967c0, type: 3}
-      wavePower: 200
-      maxPowerOnScreen: 30
-      enemyCount: 0
-      maxEnemiesOnScreen: 0
-    - delayBetweenSpawns: 1
       delayBeforeWaveWarning: 2
       waveWarning: WAVE 1 INCOMING
-      delayBeforeWaveStart: 1
+      delayBeforeWaveStart: 2
+      useCount: 1
+      enemyPrefabs:
+      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 200
+      maxPowerOnScreen: 30
+      enemyCount: 25
+      maxEnemiesOnScreen: 3
+    - delayBetweenSpawns: 0.75
+      delayBeforeWaveWarning: 0
+      waveWarning: 
+      delayBeforeWaveStart: 0
       useCount: 0
       enemyPrefabs:
-      - {fileID: 22709267512060589, guid: cc8a004fae73ae0448bc94445688128d, type: 3}
-      - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
-      wavePower: 500
-      maxPowerOnScreen: 75
-      enemyCount: 0
-      maxEnemiesOnScreen: 0
+      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 150
+      maxPowerOnScreen: 20
+      enemyCount: 25
+      maxEnemiesOnScreen: 3
+    - delayBetweenSpawns: 0.75
+      delayBeforeWaveWarning: 2
+      waveWarning: WAVE 2 INCOMING
+      delayBeforeWaveStart: 2
+      useCount: 0
+      enemyPrefabs:
+      - {fileID: 5770578389204760733, guid: cdf414eb260136e42ac75bfb92dc21d0, type: 3}
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 300
+      maxPowerOnScreen: 30
+      enemyCount: 25
+      maxEnemiesOnScreen: 3
+    - delayBetweenSpawns: 0.75
+      delayBeforeWaveWarning: 2
+      waveWarning: 
+      delayBeforeWaveStart: 2
+      useCount: 0
+      enemyPrefabs:
+      - {fileID: 5770578389204760733, guid: cdf414eb260136e42ac75bfb92dc21d0, type: 3}
+      wavePower: 150
+      maxPowerOnScreen: 20
+      enemyCount: 25
+      maxEnemiesOnScreen: 3
+    - delayBetweenSpawns: 0.75
+      delayBeforeWaveWarning: 2
+      waveWarning: WAVE 3 INCOMING
+      delayBeforeWaveStart: 2
+      useCount: 0
+      enemyPrefabs:
+      - {fileID: 9202867844860252516, guid: 3ed3af48d69d02b43aee97af50ef64f4, type: 3}
+      wavePower: 200
+      maxPowerOnScreen: 20
+      enemyCount: 25
+      maxEnemiesOnScreen: 3
 --- !u!4 &1759574553
 Transform:
   m_ObjectHideFlags: 0
@@ -6664,7 +6699,7 @@ PrefabInstance:
       objectReference: {fileID: 1756177827}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalPosition.x

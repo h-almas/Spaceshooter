@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minMaxSpeed: {x: 3, y: 6}
   maxRotationSpeed: 100
-  minMaxScale: {x: 5, y: 7}
-  missedText: {fileID: 0}
+  hp: 2
+  minMaxScale: {x: 6, y: 8}
   explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
-  power: 5
+  power: 10

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &22709267512060589
+--- !u!1 &9202867844860252516
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 19594417038980557}
-  - component: {fileID: 9768790828267033}
-  - component: {fileID: 332682718417725}
-  - component: {fileID: 8550799654664946057}
-  - component: {fileID: 4421801233605677908}
+  - component: {fileID: 9202867844860252513}
+  - component: {fileID: 9202867844860252512}
+  - component: {fileID: 9202867844860252519}
+  - component: {fileID: 9202867844860252515}
+  - component: {fileID: 9202867844860252514}
   m_Layer: 0
-  m_Name: ChasingKamikazeRocket
+  m_Name: AsteroidHuge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &19594417038980557
+--- !u!4 &9202867844860252513
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22709267512060589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
-  m_ConstrainProportionsScale: 1
+  m_GameObject: {fileID: 9202867844860252516}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.19, y: 3.93, z: 0}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9768790828267033
+--- !u!33 &9202867844860252512
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22709267512060589}
-  m_Mesh: {fileID: 2732943616901311590, guid: 0e9d6058df1cdae40ad43cc3ded56497, type: 3}
---- !u!23 &332682718417725
+  m_GameObject: {fileID: 9202867844860252516}
+  m_Mesh: {fileID: 4745511832197572522, guid: 7651d46f0c0ec7e49b82131a1c9fb804, type: 3}
+--- !u!23 &9202867844860252519
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22709267512060589}
+  m_GameObject: {fileID: 9202867844860252516}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d215bd3bb42e9764da6cb4f2e19fe1fc, type: 2}
+  - {fileID: 2100000, guid: dc82402a52a021c47bbf42f87bb8f859, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +75,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -85,35 +85,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8550799654664946057
-MeshCollider:
+--- !u!135 &9202867844860252515
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22709267512060589}
+  m_GameObject: {fileID: 9202867844860252516}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2732943616901311590, guid: 0e9d6058df1cdae40ad43cc3ded56497, type: 3}
---- !u!114 &4421801233605677908
+  serializedVersion: 2
+  m_Radius: 0.10572488
+  m_Center: {x: 0.008098094, y: -0.0012430351, z: 0}
+--- !u!114 &9202867844860252514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22709267512060589}
+  m_GameObject: {fileID: 9202867844860252516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 117418c45d12f8b4e8db5a0cff228c68, type: 3}
+  m_Script: {fileID: 11500000, guid: 842e180cc457e2e4bac40ae0004341a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 35
-  speed: 5
+  minMaxSpeed: {x: 1, y: 3}
+  maxRotationSpeed: 100
+  hp: 4
+  minMaxScale: {x: 14, y: 16}
   explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
-  steeringSpeed: 2
-  maxAngle: 80
-  hp: 1
+  power: 10

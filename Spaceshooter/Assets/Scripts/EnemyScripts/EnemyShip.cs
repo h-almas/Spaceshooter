@@ -12,6 +12,8 @@ public class EnemyShip : MonoBehaviour, Enemy
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int power = 20;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private int hp = 1;
+    private bool dead = false;
     [SerializeField] private float timeBetweenShots = .5f;
     private Camera cam;
     private float timeSinceLastShot;
@@ -84,11 +86,16 @@ public class EnemyShip : MonoBehaviour, Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
+        if (!dead && other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
+            hp--;
+            if (hp == 0)
+            {
+                dead = true;
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Player.Score += power;
+                Destroy(gameObject);
+            }
         }
     }
 }

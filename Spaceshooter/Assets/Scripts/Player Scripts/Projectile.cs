@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
         {
-            Debug.Log("We hit " + other.name);
+            //Debug.Log("We hit " + other.name);
             Destroy(gameObject);
         }
     }

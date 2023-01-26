@@ -165,4 +165,5 @@ MonoBehaviour:
   projectilePrefab: {fileID: 284881752209583065, guid: b8bbff966d35ef34aa657e8c517d1611, type: 3}
   power: 30
   speed: 5
+  hp: 2
   timeBetweenShots: 0.75

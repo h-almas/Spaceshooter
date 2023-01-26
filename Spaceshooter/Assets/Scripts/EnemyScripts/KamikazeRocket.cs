@@ -5,6 +5,8 @@ public class KamikazeRocket : MonoBehaviour, Enemy
 {
     [SerializeField] private int power = 20;
     [SerializeField] private float speed = 10;
+    [SerializeField] private int hp = 1;
+    private bool dead = false;
     [SerializeField] private GameObject explosionPrefab;
     
     void Start()
@@ -26,11 +28,16 @@ public class KamikazeRocket : MonoBehaviour, Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PlayerProjectile"))
+        if (!dead && other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
         {
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
+            hp--;
+            if (hp == 0)
+            {
+                dead = true;
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Player.Score += power;
+                Destroy(gameObject);
+            }
         }
     }
 }
