@@ -163,10 +163,11 @@ MonoBehaviour:
   playerSpeed: 10
   respawnTime: 2
   invincibleTime: 3
-  timeBetweenShots: 0.2
+  baseWeapon: {fileID: 4730436847714138070, guid: c82003a4478194940bde7d4524497a18, type: 3}
+  baseProjectile: {fileID: 284881752209583065, guid: 2ad5f8f38e8c0a94aa985bccbf0f0eab, type: 3}
   tilt: {x: 30, y: 25}
-  projectile: {fileID: 284881752209583065, guid: 2ad5f8f38e8c0a94aa985bccbf0f0eab, type: 3}
   weaponLocation: {fileID: 1188406992}
   hitExplosion: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
   scoreText: {fileID: 0}
   livesText: {fileID: 0}
+  _playerState: 0

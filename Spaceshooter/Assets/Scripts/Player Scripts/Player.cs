@@ -8,17 +8,28 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    private static int Lives = 3;
+    private int lives = 3;
     public static int Score = 0;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
     [SerializeField] private float playerSpeed = 0.2f;
     [SerializeField] private float respawnTime = 3f;
     [SerializeField] private float invincibleTime = 1.5f;
-    [SerializeField] private float timeBetweenShots = .5f;
-    private float timeSinceLastShot;
+    [SerializeField] private GameObject baseProjectile;
+    private GameObject currentProjectile;
+    [SerializeField] public Weapon baseWeapon;
+    private Weapon currentWeapon;
+    public Weapon CurrentWeapon
+        {
+            get => currentWeapon;
+            set
+            {
+                currentWeapon = value;
+                currentWeapon.SetProjectile(currentProjectile);
+                currentWeapon.SetTransform(weaponLocation);
+            }
+        }
     [SerializeField] private Vector2 tilt;
-    [SerializeField] private GameObject projectile;
     [SerializeField] private Transform weaponLocation;
     public GameObject hitExplosion;
     private List<KeyCode> activateGodMode = new List<KeyCode>();
@@ -32,28 +43,27 @@ public class Player : MonoBehaviour
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI livesText;
     
-    private enum State
+    public enum State
     {
         Playing,
         Explosion,
         Invincible,
-        Godmode
+        Godmode,
+        Shielded
     }
-    private State _playerState;
-    
 
+    public State _playerState;
 
-    
     void Start()
     {
         Score = 0;
-        Lives = 3;
+        lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
+        currentProjectile = baseProjectile;
+        CurrentWeapon = baseWeapon;
     }
     
-
-
     void Update()
     {
         if (_playerState != State.Godmode)
@@ -112,22 +122,12 @@ public class Player : MonoBehaviour
 
             if (_playerState != State.Invincible)
             {
-                if (timeSinceLastShot >= timeBetweenShots)
-                {
-                    if (Input.GetKey(KeyCode.Space)){
-                        Instantiate(projectile, weaponLocation.position, Quaternion.identity);
-                        timeSinceLastShot = 0;
-                    }
-                }
-                else
-                {
-                    timeSinceLastShot += Time.deltaTime * (_playerState==State.Godmode ? 4 : 1);
-                }
+                currentWeapon.Shoot();
                 
             }
 
             scoreText.text = "Score: " + Score;
-            livesText.text = "Lives: " + Lives;
+            livesText.text = "Lives: " + lives;
         }
     }
 
@@ -136,11 +136,9 @@ public class Player : MonoBehaviour
         if (_playerState == State.Playing && (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile")))
         {
             Instantiate(hitExplosion, transform.position, transform.rotation);
-            if (_playerState != State.Godmode)
-            {
-                //Debug.LogWarning("Ouch! Remaining lives are now: " + Lives);
-                StartCoroutine(DestroyShip());
-            }
+            
+            StartCoroutine(DestroyShip());
+            
         }
     }
 
@@ -153,13 +151,13 @@ public class Player : MonoBehaviour
         renderer.enabled = false;
         collider.enabled = false;
         
-        Lives--;
+        lives--;
         yield return new WaitForSeconds(respawnTime);
 
-        if (Lives <= 0)
+        if (lives <= 0)
         {
             SceneManager.LoadScene("Lose Screen");
-            Lives = 3;
+            lives = 3;
         }
         else
         {
@@ -188,13 +186,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+    
     private IEnumerator Blink()
     {
+        var renderer = GetComponent<Renderer>();
         while (_playerState == State.Invincible)
         {
-            var renderer = GetComponent<Renderer>();
             renderer.enabled = !renderer.enabled;
             yield return new WaitForSeconds(0.3f);
         }
     }
+
+    public void IncLives()
+    {
+        lives++;
+    }
+    
+    
+    
 }
