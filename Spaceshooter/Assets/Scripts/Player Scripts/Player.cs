@@ -156,8 +156,8 @@ public class Player : MonoBehaviour
 
         if (lives <= 0)
         {
-            SceneManager.LoadScene("Lose Screen");
-            lives = 3;
+            SceneManager.LoadScene(8);
+            Lives = 3;
         }
         else
         {

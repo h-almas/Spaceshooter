@@ -28,7 +28,7 @@ public class WindowTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         score.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
         stars.SetActive(true);
     }
 }
