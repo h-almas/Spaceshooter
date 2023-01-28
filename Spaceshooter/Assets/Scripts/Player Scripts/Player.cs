@@ -143,10 +143,11 @@ public class Player : MonoBehaviour
             }
 
             scoreText.text = "Score: " + Score;
-            scoreTextFinal.text = "Score " + Score;
             livesText.text = "Lives: " + lives;
+
+            scoreTextFinal.text = "Score " + Score;
             livesTextFinal.text = "Lives: " + lives;
-            missedHitsFinal.text = "Missed Hits: ";
+            missedHitsFinal.text = "Missed Hits: " + MissedEnemies.missedHits;
         }
     }
 
