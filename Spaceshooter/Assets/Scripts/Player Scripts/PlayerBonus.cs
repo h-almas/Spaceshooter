@@ -6,7 +6,6 @@ public class PlayerBonus : MonoBehaviour
 {
     public static int stars = 0;
     private Quaternion _initialRotationBL;
-    private Camera _mainCamera;
 
     [SerializeField] private float playerSpeed;
     [SerializeField] private Vector2 tilt;
@@ -24,7 +23,6 @@ public class PlayerBonus : MonoBehaviour
     {
         Player.Score = 0;
         _initialRotationBL = transform.rotation;
-        _mainCamera = Camera.main;
     }
 
     // Update is called once per frame

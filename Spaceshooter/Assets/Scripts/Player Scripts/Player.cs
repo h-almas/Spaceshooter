@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    private int lives = 3;
+    public static int lives = 3;
     public static int Score = 0;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
