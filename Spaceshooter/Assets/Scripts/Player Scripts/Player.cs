@@ -15,8 +15,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed = 0.2f;
     [SerializeField] private float respawnTime = 3f;
     [SerializeField] private float invincibleTime = 1.5f;
-    [SerializeField] private GameObject baseProjectile;
+    [SerializeField] public GameObject baseProjectile;
     private GameObject currentProjectile;
+
+    public GameObject CurrentProjectile
+    {
+        get => currentProjectile;
+        set
+        {
+            currentProjectile = value;
+            currentWeapon.SetProjectile(currentProjectile);
+        }
+    }
     [SerializeField] public Weapon baseWeapon;
     private Weapon currentWeapon;
     public Weapon CurrentWeapon
@@ -207,6 +217,11 @@ public class Player : MonoBehaviour
     public void IncLives()
     {
         lives++;
+    }
+
+    public void SetProjectile(GameObject proj)
+    {
+        currentProjectile = proj;
     }
     
     
