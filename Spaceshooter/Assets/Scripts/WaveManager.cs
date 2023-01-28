@@ -11,6 +11,11 @@ public class WaveManager : MonoBehaviour
     
     [SerializeField] public WaveList<Wave> waveList = new WaveList<Wave>();
 
+    private IntermissionWindow _intermissionWindow;
+    private void Awake()
+    {
+        _intermissionWindow = GetComponent<IntermissionWindow>();
+    }
 
     public void Start()
     {
@@ -30,9 +35,8 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         //PlayerPrefs.SetInt("OverallScore", PlayerPrefs.GetInt("OverallScore",0) + Player.Score);
-        var window = GetComponent<IntermissionWindow>();
-        window.OpenWindow();
-
+        
+        _intermissionWindow.OpenWindow();
     }
 
 
