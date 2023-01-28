@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         set
         {
             currentProjectile = value;
-            currentWeapon.SetProjectile(currentProjectile);
+            currentWeapon.SetProjectile(value);
         }
     }
     [SerializeField] public Weapon baseWeapon;
@@ -222,12 +222,4 @@ public class Player : MonoBehaviour
     {
         lives++;
     }
-
-    public void SetProjectile(GameObject proj)
-    {
-        currentProjectile = proj;
-    }
-    
-    
-    
 }

@@ -14,6 +14,7 @@ public class PowerUp : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        if(GetComponent<Collider>().enabled) 
+            Destroy(gameObject);
     }
 }
