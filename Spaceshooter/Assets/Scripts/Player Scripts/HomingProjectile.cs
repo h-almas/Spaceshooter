@@ -62,7 +62,12 @@ public class HomingProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().GetDamage(1);
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("EnemyProjectile"))
         {
             Destroy(gameObject);
         }

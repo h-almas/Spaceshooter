@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenShots: 0
+  laser: {fileID: 5080524325536056657, guid: 56ea35c1e25539a469a51987fa7f305c, type: 3}

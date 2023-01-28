@@ -15,11 +15,15 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("We hit " + other.name);
+            other.GetComponent<Enemy>().GetDamage(1);
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("EnemyProjectile"))
+        {
             Destroy(gameObject);
         }
     }

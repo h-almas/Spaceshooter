@@ -20,7 +20,7 @@ public class PowerUpBubble : PowerUp
         GetComponent<Collider>().enabled = false;
         GetComponent<Renderer>().enabled = false;
 
-        Player.State previous = player._playerState;
+        Player.State previous = player._playerState == Player.State.Godmode ? Player.State.Godmode : Player.State.Playing;
         player._playerState = Player.State.Shielded;
         GameObject bubble = Instantiate(shieldBubblePrefab, player.transform);
         

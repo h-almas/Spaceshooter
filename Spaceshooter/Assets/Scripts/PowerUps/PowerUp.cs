@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -9,5 +10,11 @@ public class PowerUp : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.down * (speed*Time.deltaTime));
+    }
+
+    private void OnBecameInvisible()
+    {
+        if(GetComponent<Collider>().enabled) 
+            Destroy(gameObject);
     }
 }

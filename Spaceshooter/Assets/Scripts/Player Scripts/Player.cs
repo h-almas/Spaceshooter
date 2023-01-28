@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         set
         {
             currentProjectile = value;
-            currentWeapon.SetProjectile(currentProjectile);
+            currentWeapon.SetProjectile(value);
         }
     }
     [SerializeField] public Weapon baseWeapon;
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
             get => currentWeapon;
             set
             {
+                currentWeapon.DoCleanUp();
                 currentWeapon = value;
                 currentWeapon.SetProjectile(currentProjectile);
                 currentWeapon.SetTransform(weaponLocation);
@@ -74,7 +75,9 @@ public class Player : MonoBehaviour
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
         currentProjectile = baseProjectile;
-        CurrentWeapon = baseWeapon;
+        currentWeapon = baseWeapon;
+        currentWeapon.SetProjectile(currentProjectile);
+        currentWeapon.SetTransform(weaponLocation);
     }
     
     void Update()
@@ -219,12 +222,4 @@ public class Player : MonoBehaviour
     {
         lives++;
     }
-
-    public void SetProjectile(GameObject proj)
-    {
-        currentProjectile = proj;
-    }
-    
-    
-    
 }
