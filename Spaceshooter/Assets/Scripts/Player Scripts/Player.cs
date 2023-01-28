@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
 
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI livesText;
+    public TMPro.TextMeshProUGUI scoreTextFinal;
+    public TMPro.TextMeshProUGUI livesTextFinal;
+    public TMPro.TextMeshProUGUI missedHitsFinal;
     
     public enum State
     {
@@ -127,7 +130,10 @@ public class Player : MonoBehaviour
             }
 
             scoreText.text = "Score: " + Score;
+            scoreTextFinal.text = "Score " + Score;
             livesText.text = "Lives: " + lives;
+            livesTextFinal.text = "Lives: " + lives;
+            missedHitsFinal.text = "Missed Hits: ";
         }
     }
 

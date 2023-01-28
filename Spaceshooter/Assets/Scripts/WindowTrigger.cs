@@ -7,8 +7,8 @@ public class WindowTrigger : MonoBehaviour
 {
     [SerializeField] private Transform statsWindow;
     [SerializeField] private Transform playStats;
-    public GameObject score;
-    public GameObject stars;
+    [SerializeField] private GameObject score;
+    [SerializeField] private GameObject stars;
     private void Awake()
     {
         statsWindow.localScale = Vector2.zero;
