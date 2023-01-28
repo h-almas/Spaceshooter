@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class MissedEnemies : MonoBehaviour
 {
+    public static int missedHits;
     [SerializeField] private TMPro.TextMeshProUGUI missedText;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            PlayerPrefs.SetInt("MissedEnemies", PlayerPrefs.GetInt("MissedEnemies", 0) + 1);
-            missedText.text = "Missed Hits " + PlayerPrefs.GetInt("MissedEnemies", 0);
+            missedHits++;
+            missedText.text = "Missed Hits " + missedHits;
             Destroy(other.gameObject);
         }
     }
