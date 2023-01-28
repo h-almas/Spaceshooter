@@ -7,6 +7,7 @@ using UnityEngine;
 public interface Enemy
 {
     public int GetPower();
+    public void GetDamage(int damage);
 }
 
 

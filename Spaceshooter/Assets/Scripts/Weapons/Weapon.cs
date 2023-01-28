@@ -16,6 +16,8 @@ public abstract class Weapon : MonoBehaviour
     {
         this.projectilePrefab = projectilePrefab;
     }
+
+    public virtual void DoCleanUp(){}
     
     public abstract void Shoot();
 }

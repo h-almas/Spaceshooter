@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
             get => currentWeapon;
             set
             {
+                currentWeapon.DoCleanUp();
                 currentWeapon = value;
                 currentWeapon.SetProjectile(currentProjectile);
                 currentWeapon.SetTransform(weaponLocation);
@@ -74,7 +75,9 @@ public class Player : MonoBehaviour
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
         currentProjectile = baseProjectile;
-        CurrentWeapon = baseWeapon;
+        currentWeapon = baseWeapon;
+        currentWeapon.SetProjectile(currentProjectile);
+        currentWeapon.SetTransform(weaponLocation);
     }
     
     void Update()

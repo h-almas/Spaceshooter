@@ -40,18 +40,29 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
         return power;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void GetDamage(int damage)
     {
-        if (!dead && other.CompareTag("PlayerProjectile") || other.CompareTag("Player"))
+        if (!dead)
         {
-            hp--;
-            if (hp == 0)
+            hp -= damage;
+            if (hp <= 0)
             {
                 dead = true;
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
                 Player.Score += power;
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!dead && other.CompareTag("Player"))
+        {
+            dead = true;
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+            Player.Score += power;
+            Destroy(gameObject);
         }
     }
 }
