@@ -10,7 +10,7 @@ public class MissedEnemies : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             missedHits++;
-            missedText.text = "Missed Hits " + missedHits;
+            missedText.text = "Missed Hits: " + missedHits;
             Destroy(other.gameObject);
         }
     }
