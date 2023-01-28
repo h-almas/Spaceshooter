@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
         if (lives <= 0)
         {
             SceneManager.LoadScene(8);
-            Lives = 3;
+            lives = 3;
         }
         else
         {
