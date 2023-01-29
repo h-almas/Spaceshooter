@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   duration: 15
+  message: Spread!
   weaponPrefab: {fileID: 859857918564153528, guid: a0cf1e3e2fb77e149b4d81ae155da2b4, type: 3}
 --- !u!1 &8781783069934877783
 GameObject:

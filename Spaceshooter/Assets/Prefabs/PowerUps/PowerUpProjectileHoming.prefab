@@ -211,4 +211,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   duration: 15
+  message: Homing!
   projectilePrefab: {fileID: 284881752209583065, guid: cabfb569a5be5fe479b3c3c60adb3563, type: 3}

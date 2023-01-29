@@ -6,6 +6,7 @@ public class PowerUpLives : PowerUp
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<WarningMessage>().DisplayMessage(message);
             other.GetComponent<Player>().IncLives();
             Destroy(gameObject);
         }

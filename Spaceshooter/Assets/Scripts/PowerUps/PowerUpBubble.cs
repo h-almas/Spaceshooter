@@ -11,6 +11,7 @@ public class PowerUpBubble : PowerUp
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<WarningMessage>().DisplayMessage(message);
             StartCoroutine(ApplyEffect(other.GetComponent<Player>()));
         }
     }

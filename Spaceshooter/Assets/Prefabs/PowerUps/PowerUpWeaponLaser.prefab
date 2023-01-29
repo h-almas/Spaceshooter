@@ -211,4 +211,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   duration: 5
+  message: Laser!
   weaponPrefab: {fileID: 4142308935605085971, guid: 9f6b987102df33a41af5990421304533, type: 3}
