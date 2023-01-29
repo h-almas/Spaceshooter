@@ -7,23 +7,11 @@ public class WeaponLaser : Weapon
     private Camera mainCamera;
     private Vector3 playerToMouseOld = Vector3.zero;
     
-    private void Start()
+    private void Awake()
     {
         mainCamera = Camera.main;
         laser = Instantiate(laser);
-        
-        float r = laser.transform.localScale.y;
-        Vector3 mousePos = Input.mousePosition;
-        mousePos = mainCamera.ScreenToWorldPoint(mousePos);
-        Vector3 weaponPosition = weaponTransform.position;
-        weaponPosition.z = 0;
-        mousePos.z = 0;
-        Vector3 playerToMouse = mousePos - weaponPosition;
-        playerToMouse = playerToMouse.normalized * r;
-        playerToMouse.z = 0;
-        
-        laser.transform.position = weaponPosition + playerToMouse;
-        
+
     }
 
     public override void DoCleanUp()
@@ -34,7 +22,8 @@ public class WeaponLaser : Weapon
     public override void Shoot()
     {
         //calculate offset from player
-        float r = laser.transform.localScale.y;
+        //float r = laser.transform.localScale.y;
+        float r = .05f;
         Vector3 mousePos = Input.mousePosition;
         mousePos = mainCamera.ScreenToWorldPoint(mousePos);
         Vector3 weaponPosition = weaponTransform.position;
@@ -49,7 +38,7 @@ public class WeaponLaser : Weapon
         if (Mathf.Abs(angleOfLaser) <= 60)
         {
             //set rotation of laser
-            laser.transform.rotation = Quaternion.Euler(0,0, angleOfLaser);
+            laser.transform.rotation = Quaternion.Euler(-90 + angleOfLaser,-90, 0);
             
             //set position of laser
             laser.transform.position = weaponPosition + playerToMouse;
@@ -58,6 +47,8 @@ public class WeaponLaser : Weapon
         }
         else
         {
+            if (playerToMouseOld == Vector3.zero)
+                playerToMouseOld = Vector3.up * r;
             laser.transform.position = weaponPosition + playerToMouseOld;
         }
             

@@ -16,6 +16,10 @@ public class PowerUpWeapon : PowerUp
     {
         GetComponent<Collider>().enabled = false;
         GetComponent<Renderer>().enabled = false;
+        foreach (var componentsInChild in GetComponentsInChildren<Renderer>())
+        {
+            componentsInChild.enabled = false;
+        }
         
         GameObject w = Instantiate(weaponPrefab);
         Weapon weapon = w.GetComponent<Weapon>();
