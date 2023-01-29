@@ -1583,6 +1583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 604567154}
+  - component: {fileID: 604567155}
   m_Layer: 0
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -1605,12 +1606,25 @@ Transform:
   - {fileID: 68291184}
   - {fileID: 1845222592}
   - {fileID: 1232243270}
-  - {fileID: 1771644889}
-  - {fileID: 544401920}
   - {fileID: 1550613587}
+  - {fileID: 544401920}
+  - {fileID: 1771644889}
   m_Father: {fileID: 1605894796}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &604567155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604567153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b1d5e7707bc96408bd5d7ddc1e04ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
 --- !u!1 &611501018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3174,7 @@ MonoBehaviour:
   sounds:
   - name: MainMenu
     audioClip: {fileID: 8300000, guid: 342ed162d6589124a98df18f46942202, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
     volume: 0.6
     loop: 1
     audioSource: {fileID: 0}
@@ -3564,7 +3579,7 @@ GameObject:
   - component: {fileID: 1550613587}
   - component: {fileID: 1550613588}
   m_Layer: 0
-  m_Name: FXVolume
+  m_Name: MusicVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3586,7 +3601,7 @@ RectTransform:
   - {fileID: 423730692}
   - {fileID: 953419021}
   m_Father: {fileID: 604567154}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3637,13 +3652,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1487873257}
   m_HandleRect: {fileID: 1131662582}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.6
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VolumeManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1605894792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,7 +4055,7 @@ GameObject:
   - component: {fileID: 1771644889}
   - component: {fileID: 1771644890}
   m_Layer: 0
-  m_Name: MusicVolume
+  m_Name: FXVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4050,7 +4077,7 @@ RectTransform:
   - {fileID: 1301585868}
   - {fileID: 1701518728}
   m_Father: {fileID: 604567154}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
