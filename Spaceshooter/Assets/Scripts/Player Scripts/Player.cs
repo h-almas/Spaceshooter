@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    public static int lives = 3;
+    public static int Lives = 3;
     public static int Score = 0;
     private Quaternion _initialRotation;
     private Camera _mainCamera;
     [SerializeField] private float playerSpeed = 0.2f;
-    [SerializeField] private float respawnTime = 3f;
-    [SerializeField] private float invincibleTime = 1.5f;
+    [SerializeField] private float respawnTime = 1.5f;
+    [SerializeField] private float invincibleTime = 1f;
     [SerializeField] public GameObject baseProjectile;
     private GameObject currentProjectile;
 
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Score = 0;
-        lives = 3;
+        Lives = 3;
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
         currentProjectile = baseProjectile;
@@ -143,10 +143,10 @@ public class Player : MonoBehaviour
             }
 
             scoreText.text = "Score: " + Score;
-            livesText.text = "Lives: " + lives;
+            livesText.text = "Lives: " + Lives;
 
             scoreTextFinal.text = "Score " + Score;
-            livesTextFinal.text = "Lives: " + lives;
+            livesTextFinal.text = "Lives: " + Lives;
             missedHitsFinal.text = "Missed Hits: " + MissedEnemies.missedHits;
         }
     }
@@ -171,13 +171,13 @@ public class Player : MonoBehaviour
         renderer.enabled = false;
         collider.enabled = false;
         
-        lives--;
+        Lives--;
         yield return new WaitForSeconds(respawnTime);
 
-        if (lives <= 0)
+        if (Lives <= 0)
         {
             SceneManager.LoadScene(8);
-            lives = 3;
+            Lives = 3;
         }
         else
         {
@@ -200,7 +200,6 @@ public class Player : MonoBehaviour
             collider.enabled = true;
             
             _playerState = State.Playing;
-            StopCoroutine(Blink());
             renderer.enabled = true;
 
         }
@@ -220,6 +219,6 @@ public class Player : MonoBehaviour
 
     public void IncLives()
     {
-        lives++;
+        Lives++;
     }
 }

@@ -19,7 +19,7 @@ public class WinSceneStarter : MonoBehaviour
     void Start()
     {
         scoreText.text = "SCORE: " + Player.Score;
-        livesText.text = "LIVES: " + Player.lives;
+        livesText.text = "LIVES: " + Player.Lives;
         starsText.text = "STARS: " + PlayerBonus.stars;
         missedHitsText.text = "MISSED HITS: " + MissedEnemies.missedHits;
         fadeImage.LeanAlpha(0, 2);
