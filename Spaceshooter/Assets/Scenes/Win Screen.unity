@@ -3195,7 +3195,8 @@ MonoBehaviour:
   sounds:
   - name: WinTheme
     audioClip: {fileID: 8300000, guid: 93844a4485af02c4983ee9f4db5c5c0d, type: 3}
-    volume: 0.6
+    audioMixerGroup: {fileID: 24300002, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
+    volume: 1
     loop: 1
     audioSource: {fileID: 0}
 --- !u!4 &1873115516

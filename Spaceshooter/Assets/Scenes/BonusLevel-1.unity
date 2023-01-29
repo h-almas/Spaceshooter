@@ -2348,7 +2348,8 @@ MonoBehaviour:
   sounds:
   - name: BonusLevelSong
     audioClip: {fileID: 8300000, guid: 0b4ce9bac4f1b1043af29b928992659b, type: 3}
-    volume: 0.6
+    audioMixerGroup: {fileID: 0}
+    volume: 1
     loop: 1
     audioSource: {fileID: 0}
 --- !u!4 &288270867
@@ -3078,6 +3079,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3764357080366773830, guid: 8dbd97268c395a847ba8b249299fee59, type: 3}
   m_PrefabInstance: {fileID: 408922491}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &428822996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428822998}
+  - component: {fileID: 428822997}
+  m_Layer: 0
+  m_Name: VolumeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &428822997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428822996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b1d5e7707bc96408bd5d7ddc1e04ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
+  volumeSlider: {fileID: 1957674529}
+--- !u!4 &428822998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428822996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &432152782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14913,7 +14960,7 @@ GameObject:
   - component: {fileID: 1173244907}
   - component: {fileID: 1173244908}
   m_Layer: 0
-  m_Name: MusicVolume
+  m_Name: FXVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14935,7 +14982,7 @@ RectTransform:
   - {fileID: 1773066323}
   - {fileID: 70644462}
   m_Father: {fileID: 1985995850}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21321,7 +21368,7 @@ GameObject:
   - component: {fileID: 1957674528}
   - component: {fileID: 1957674529}
   m_Layer: 0
-  m_Name: FXVolume
+  m_Name: MusicVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21343,7 +21390,7 @@ RectTransform:
   - {fileID: 1272366878}
   - {fileID: 109736590}
   m_Father: {fileID: 1985995850}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21394,13 +21441,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 870800988}
   m_HandleRect: {fileID: 358605052}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 428822997}
+        m_TargetAssemblyTypeName: VolumeManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1975500673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21555,9 +21614,9 @@ Transform:
   m_Children:
   - {fileID: 276560306}
   - {fileID: 1472631327}
-  - {fileID: 1173244907}
-  - {fileID: 2100507480}
   - {fileID: 1957674528}
+  - {fileID: 2100507480}
+  - {fileID: 1173244907}
   - {fileID: 159262461}
   m_Father: {fileID: 1165824058}
   m_RootOrder: 4

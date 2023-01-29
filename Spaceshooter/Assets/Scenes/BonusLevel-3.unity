@@ -5514,7 +5514,7 @@ GameObject:
   - component: {fileID: 266685610}
   - component: {fileID: 266685611}
   m_Layer: 0
-  m_Name: FXVolume
+  m_Name: MusicVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5536,7 +5536,7 @@ RectTransform:
   - {fileID: 1437258462}
   - {fileID: 1630058578}
   m_Father: {fileID: 1934008921}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5587,13 +5587,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1571044510}
   m_HandleRect: {fileID: 1066941666}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338598387}
+        m_TargetAssemblyTypeName: VolumeManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &272001177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28922,6 +28934,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 418980253369177129, guid: a640b1cfb2314c947a37ad650e0d9242, type: 3}
   m_PrefabInstance: {fileID: 1331755363}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1338598386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338598388}
+  - component: {fileID: 1338598387}
+  m_Layer: 0
+  m_Name: VolumeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1338598387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338598386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b1d5e7707bc96408bd5d7ddc1e04ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
+  volumeSlider: {fileID: 266685611}
+--- !u!4 &1338598388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338598386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1340152265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36418,7 +36476,7 @@ GameObject:
   - component: {fileID: 1653403371}
   - component: {fileID: 1653403372}
   m_Layer: 0
-  m_Name: MusicVolume
+  m_Name: FXVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36440,7 +36498,7 @@ RectTransform:
   - {fileID: 523151975}
   - {fileID: 128418395}
   m_Father: {fileID: 1934008921}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -43595,9 +43653,9 @@ Transform:
   m_Children:
   - {fileID: 983249756}
   - {fileID: 1351409335}
-  - {fileID: 1653403371}
-  - {fileID: 1943652637}
   - {fileID: 266685610}
+  - {fileID: 1943652637}
+  - {fileID: 1653403371}
   - {fileID: 691183682}
   m_Father: {fileID: 1312206894}
   m_RootOrder: 4
@@ -53198,7 +53256,8 @@ MonoBehaviour:
   sounds:
   - name: BonusLevelSong
     audioClip: {fileID: 8300000, guid: 0b4ce9bac4f1b1043af29b928992659b, type: 3}
-    volume: 0.6
+    audioMixerGroup: {fileID: 0}
+    volume: 1
     loop: 1
     audioSource: {fileID: 0}
 --- !u!4 &2126811094

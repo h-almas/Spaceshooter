@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0054672165, g: 0.020076044, b: 0.004604739, a: 1}
+  m_IndirectSpecularColor: {r: 0.0054865433, g: 0.020067977, b: 0.004624783, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1082,9 +1082,9 @@ Transform:
   m_Children:
   - {fileID: 1422759189}
   - {fileID: 478766286}
-  - {fileID: 2141713324}
-  - {fileID: 1216528478}
   - {fileID: 2130060602}
+  - {fileID: 1216528478}
+  - {fileID: 2141713324}
   - {fileID: 1166073461}
   m_Father: {fileID: 1387023690}
   m_RootOrder: 4
@@ -2674,6 +2674,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1114286368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114286370}
+  - component: {fileID: 1114286369}
+  m_Layer: 0
+  m_Name: VolumeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1114286369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114286368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b1d5e7707bc96408bd5d7ddc1e04ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
+  volumeSlider: {fileID: 2130060603}
+--- !u!4 &1114286370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114286368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123112913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,7 +4732,8 @@ MonoBehaviour:
   sounds:
   - name: Song2
     audioClip: {fileID: 8300000, guid: 2c2ddb0f87b389c49a2bf9fb5f5e6203, type: 3}
-    volume: 0.6
+    audioMixerGroup: {fileID: 0}
+    volume: 1
     loop: 1
     audioSource: {fileID: 0}
 --- !u!4 &1668503292
@@ -10752,7 +10799,7 @@ GameObject:
   - component: {fileID: 2130060602}
   - component: {fileID: 2130060603}
   m_Layer: 0
-  m_Name: FXVolume
+  m_Name: MusicVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10774,7 +10821,7 @@ RectTransform:
   - {fileID: 1010082800}
   - {fileID: 1077325215}
   m_Father: {fileID: 284729889}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10825,13 +10872,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 50772115}
   m_HandleRect: {fileID: 142079414}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1114286369}
+        m_TargetAssemblyTypeName: VolumeManager, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2141713323
 GameObject:
   m_ObjectHideFlags: 0
@@ -10843,7 +10902,7 @@ GameObject:
   - component: {fileID: 2141713324}
   - component: {fileID: 2141713325}
   m_Layer: 0
-  m_Name: MusicVolume
+  m_Name: FXVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10865,7 +10924,7 @@ RectTransform:
   - {fileID: 41504439}
   - {fileID: 322424310}
   m_Father: {fileID: 284729889}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
