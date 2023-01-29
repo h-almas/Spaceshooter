@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 4098428611867728501}
   - component: {fileID: 329665483817760088}
   - component: {fileID: 8443905314110592007}
+  - component: {fileID: 4812858117944734920}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,5 +202,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
+    - target: {fileID: 1257000657651723351, guid: df3287d678aa43d47a92023246542402, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df3287d678aa43d47a92023246542402, type: 3}
+--- !u!114 &4812858117944734920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449094676580393285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2983758a4de1c934daf02796f9f276ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
