@@ -7,9 +7,14 @@ public class ShieldBubble : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().GetDamage(5);
+        }
+
+        if (other.CompareTag("EnemyProjectile"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }
