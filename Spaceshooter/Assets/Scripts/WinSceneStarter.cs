@@ -28,13 +28,13 @@ public class WinSceneStarter : MonoBehaviour
 
     private IEnumerator FinalStats()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2);
         scoreFinal.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
         livesFinal.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
         starsFinal.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.8f);
         missedHitsFinal.SetActive(true);
         yield return new WaitForSeconds(2);
         buttons.SetActive(true);
