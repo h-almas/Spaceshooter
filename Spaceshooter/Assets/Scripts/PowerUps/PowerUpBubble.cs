@@ -17,8 +17,7 @@ public class PowerUpBubble : PowerUp
 
     private IEnumerator ApplyEffect(Player player)
     {
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().enabled = false;
+        DisableColliderAndRenderer();
 
         Player.State previous = player._playerState == Player.State.Godmode ? Player.State.Godmode : Player.State.Playing;
         player._playerState = Player.State.Shielded;

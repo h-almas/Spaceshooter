@@ -89,7 +89,7 @@ public class WaveManager : MonoBehaviour
                 }
 
 
-                if (onScreen <= max)
+                if (onScreen < max)
                 {
                     int randomEnemyType = Random.Range(0, enemyPrefabs.Count);
 

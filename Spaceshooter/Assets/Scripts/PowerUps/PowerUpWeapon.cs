@@ -14,12 +14,7 @@ public class PowerUpWeapon : PowerUp
 
     private IEnumerator ApplyEffect(Player player)
     {
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().enabled = false;
-        foreach (var componentsInChild in GetComponentsInChildren<Renderer>())
-        {
-            componentsInChild.enabled = false;
-        }
+        DisableColliderAndRenderer();
         
         GameObject w = Instantiate(weaponPrefab);
         Weapon weapon = w.GetComponent<Weapon>();

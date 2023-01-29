@@ -15,8 +15,7 @@ public class PowerUpProjectile : PowerUp
 
     private IEnumerator ApplyEffect(Player player)
     {
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().enabled = false;
+        DisableColliderAndRenderer();
         
         player.CurrentProjectile = projectilePrefab;
         

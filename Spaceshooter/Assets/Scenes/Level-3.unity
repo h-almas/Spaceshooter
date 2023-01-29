@@ -4537,7 +4537,7 @@ MonoBehaviour:
   - {fileID: 6705280684856222141, guid: 0db2460981590d94d8aff4b0b22424a7, type: 3}
   - {fileID: 6705280684856222141, guid: 145b36d224b69c94a942b0e4340d6b5f, type: 3}
   - {fileID: 6705280684856222141, guid: 0d0e95d41de22294bb99caf055f40a07, type: 3}
-  spawnEveryXSeconds: 10
+  spawnEveryXSeconds: 20
 --- !u!4 &1459069480
 Transform:
   m_ObjectHideFlags: 0
@@ -4551,7 +4551,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485739623
 GameObject:

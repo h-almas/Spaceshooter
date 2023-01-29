@@ -12,6 +12,16 @@ public class PowerUp : MonoBehaviour
         transform.Translate(Vector3.down * (speed*Time.deltaTime));
     }
 
+    protected void DisableColliderAndRenderer()
+    {
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Renderer>().enabled = false;
+        foreach (var componentsInChild in GetComponentsInChildren<Renderer>())
+        {
+            componentsInChild.enabled = false;
+        }
+    }
+
     private void OnBecameInvisible()
     {
         if(GetComponent<Collider>().enabled) 

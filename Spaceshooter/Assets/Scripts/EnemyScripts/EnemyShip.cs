@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +13,9 @@ public class EnemyShip : Enemy
     private Camera cam;
     private float timeSinceLastShot;
     private Vector3 direction = Vector3.right;
+    private bool goUp = false;
+    private bool dashDown = false;
+    private float timeBeforeDash = 10f;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,14 @@ public class EnemyShip : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (goUp) return;
+        if (dashDown)
+        {
+            transform.Translate(Vector3.up*(speed*3*Time.deltaTime));
+            return;
+        }
+        
+        
         #region Move
 
         Vector3 posInView = cam.WorldToViewportPoint(transform.position);
@@ -73,5 +83,30 @@ public class EnemyShip : Enemy
             t += speed * Time.deltaTime;
             yield return new WaitForNextFrameUnit();
         }
+
+        yield return new WaitForSeconds(timeBeforeDash);
+
+        goUp = true;
+        
+        StartCoroutine(Dash());
+
+    }
+
+    private IEnumerator Dash()
+    {
+        Vector3 moveBack = transform.position + Vector3.up*1.5f;
+        float originY = transform.position.y;
+        
+        //move back
+        while (transform.position.y < moveBack.y)
+        {
+            transform.Translate(Vector3.down * (speed*Time.deltaTime));
+            yield return new WaitForNextFrameUnit();
+        }
+
+        yield return new WaitForSeconds(.25f);
+
+        goUp = false;
+        dashDown = true;
     }
 }
