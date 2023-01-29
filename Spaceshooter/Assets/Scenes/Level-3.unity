@@ -3550,13 +3550,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 580985683}
   m_HandleRect: {fileID: 1485739624}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1545726332}
+        m_TargetAssemblyTypeName: VolumeManager, Assembly-CSharp
+        m_MethodName: ChangeFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1070332241
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,6 +4749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
   volumeSlider: {fileID: 2069333664}
+  fxMixer: {fileID: 24100000, guid: a992cdbc03ec7e9419f648bd56d60e8f, type: 2}
+  fxSlider: {fileID: 1042733627}
 --- !u!4 &1545726333
 Transform:
   m_ObjectHideFlags: 0
