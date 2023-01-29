@@ -20,7 +20,6 @@ public class PowerUpProjectile : PowerUp
         
         player.CurrentProjectile = projectilePrefab;
         
-
         yield return new WaitForSeconds(duration);
 
         if(player.CurrentProjectile==projectilePrefab)

@@ -11,6 +11,19 @@ public class WeaponLaser : Weapon
     {
         mainCamera = Camera.main;
         laser = Instantiate(laser);
+        
+        float r = laser.transform.localScale.y;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos = mainCamera.ScreenToWorldPoint(mousePos);
+        Vector3 weaponPosition = weaponTransform.position;
+        weaponPosition.z = 0;
+        mousePos.z = 0;
+        Vector3 playerToMouse = mousePos - weaponPosition;
+        playerToMouse = playerToMouse.normalized * r;
+        playerToMouse.z = 0;
+        
+        laser.transform.position = weaponPosition + playerToMouse;
+        
     }
 
     public override void DoCleanUp()

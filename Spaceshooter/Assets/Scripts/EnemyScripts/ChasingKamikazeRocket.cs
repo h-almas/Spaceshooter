@@ -5,15 +5,11 @@ using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
-public class ChasingKamikazeRocket : MonoBehaviour, Enemy
+public class ChasingKamikazeRocket : Enemy
 {
-    [SerializeField] private int power = 20;
     [SerializeField] private float speed = 10;
-    [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float steeringSpeed = 5;
     [SerializeField] private float maxAngle = 45f;
-    [SerializeField] private int hp = 1;
-    private bool dead = false;
     private Transform target;
     
     void Start()
@@ -33,36 +29,5 @@ public class ChasingKamikazeRocket : MonoBehaviour, Enemy
         
         transform.Translate(Vector3.down*(speed*Time.deltaTime), Space.Self);
 
-    }
-
-    public int GetPower()
-    {
-        return power;
-    }
-
-    public void GetDamage(int damage)
-    {
-        if (!dead)
-        {
-            hp -= damage;
-            if (hp <= 0)
-            {
-                dead = true;
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
-                Player.Score += power;
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!dead && other.CompareTag("Player"))
-        {
-            dead = true;
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
-        }
     }
 }

@@ -26,9 +26,7 @@ public class PowerUpWeapon : PowerUp
 
         if(player.CurrentWeapon==weapon)
             player.CurrentWeapon = player.baseWeapon;
-
         
-        Debug.Log("AAA");
         weapon.DoCleanUp();
         Destroy(w);
         Destroy(gameObject);
