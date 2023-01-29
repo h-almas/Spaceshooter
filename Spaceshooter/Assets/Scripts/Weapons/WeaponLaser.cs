@@ -7,7 +7,7 @@ public class WeaponLaser : Weapon
     private Camera mainCamera;
     private Vector3 playerToMouseOld = Vector3.zero;
     
-    private void Awake()
+    private void Start()
     {
         mainCamera = Camera.main;
         laser = Instantiate(laser);

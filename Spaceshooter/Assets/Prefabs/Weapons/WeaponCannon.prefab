@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000bccf81aca0b5468c0f1f464a45929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShots: 0.75
+  timeBetweenShots: 1
+  cannonBall: {fileID: 5660798122319067535, guid: 5941ef307f2ad60429fde3a19217abc0, type: 3}

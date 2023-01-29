@@ -22,13 +22,13 @@ public class HomingProjectile : MonoBehaviour
                 GameObject closest = null;
                 foreach (GameObject g in enemies)
                 {
-                    if (closest == null && Vector3.Distance(transform.position, g.transform.position)<maxDistance && (g.CompareTag("EnemyProjectile") || g.CompareTag("Enemy")))
+                    if (closest == null && Vector3.Distance(transform.position, g.transform.position)<maxDistance && g.CompareTag("Enemy"))
                     {
                         closest = g;
                         continue;
                     }
                     
-                    if (Vector3.Distance(transform.position, g.transform.position)<maxDistance && (g.CompareTag("EnemyProjectile") || g.CompareTag("Enemy")) && Vector3.Distance(g.transform.position, transform.position) <
+                    if (Vector3.Distance(transform.position, g.transform.position)<maxDistance && g.CompareTag("Enemy") && Vector3.Distance(g.transform.position, transform.position) <
                         Vector3.Distance(closest.transform.position, transform.position))
                     {
                         closest = g;
