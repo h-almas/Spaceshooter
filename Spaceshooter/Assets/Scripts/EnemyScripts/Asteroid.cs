@@ -4,18 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Asteroid : MonoBehaviour, Enemy
+public class Asteroid : Enemy
 {
     [SerializeField] private Vector2 minMaxSpeed;
     [SerializeField] private float maxRotationSpeed;
-    [SerializeField] private int hp = 1;
-    private bool dead = false;
     private Vector3 _rotationSpeed;
     private float _speed;
     [SerializeField] private Vector2 minMaxScale;
-
-    public GameObject explosionPrefab;
-    [SerializeField] private int power;
 
     void Start()
     {
@@ -46,36 +41,5 @@ public class Asteroid : MonoBehaviour, Enemy
         
         transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
 
-    }
-
-    public void GetDamage(int damage)
-    {
-        if (!dead)
-        {
-            hp -= damage;
-            if (hp <= 0)
-            {
-                dead = true;
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
-                Player.Score += power;
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!dead && other.CompareTag("Player"))
-        {
-            dead = true;
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
-        }
-    }
-
-    public int GetPower()
-    {
-        return power;
     }
 }

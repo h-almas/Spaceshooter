@@ -1,13 +1,9 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class KamikazeRocket : MonoBehaviour, Enemy
+public class KamikazeRocket : Enemy
 {
-    [SerializeField] private int power = 20;
     [SerializeField] private float speed = 10;
-    [SerializeField] private int hp = 1;
-    private bool dead = false;
-    [SerializeField] private GameObject explosionPrefab;
     
     void Start()
     {
@@ -18,37 +14,5 @@ public class KamikazeRocket : MonoBehaviour, Enemy
     void Update()
     {
         transform.Translate(Vector3.down * (speed * Time.deltaTime), Space.World);
-        
-    }
-
-    public int GetPower()
-    {
-        return power;
-    }
-
-    public void GetDamage(int damage)
-    {
-        if (!dead)
-        {
-            hp -= damage;
-            if (hp <= 0)
-            {
-                dead = true;
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
-                Player.Score += power;
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!dead && other.CompareTag("Player"))
-        {
-            dead = true;
-            Instantiate(explosionPrefab, transform.position, transform.rotation);
-            Player.Score += power;
-            Destroy(gameObject);
-        }
     }
 }

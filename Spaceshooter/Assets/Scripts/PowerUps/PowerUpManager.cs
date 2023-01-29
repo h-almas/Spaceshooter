@@ -24,10 +24,15 @@ public class PowerUpManager : MonoBehaviour
 
     public void SpawnRandomPowerUp()
     {
-        
         if(powerUps.Length>0)
             Instantiate(powerUps[Random.Range(0, powerUps.Length)], Camera.main.ViewportToWorldPoint(
                 new Vector3(Random.Range(0.0f, 1.0f), 1.1f, 10)), Quaternion.identity);
+    }
+    
+    public void DropRandomPowerUp(float dropChance, Vector3 positon)
+    {
+        if(powerUps.Length>0 && Random.Range(0f,1f)<dropChance)
+            Instantiate(powerUps[Random.Range(0, powerUps.Length)], positon, Quaternion.identity);
     }
     
 }
