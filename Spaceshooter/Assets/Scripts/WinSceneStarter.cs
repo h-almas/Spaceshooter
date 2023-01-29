@@ -22,21 +22,21 @@ public class WinSceneStarter : MonoBehaviour
         livesText.text = "LIVES: " + Player.lives;
         starsText.text = "STARS: " + PlayerBonus.stars;
         missedHitsText.text = "MISSED HITS: " + MissedEnemies.missedHits;
-        fadeImage.LeanAlpha(0, 1);
+        fadeImage.LeanAlpha(0, 2);
         StartCoroutine(FinalStats());
     }
 
     private IEnumerator FinalStats()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         scoreFinal.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.6f);
         livesFinal.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.6f);
         starsFinal.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.6f);
         missedHitsFinal.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         buttons.SetActive(true);
     }
 }
