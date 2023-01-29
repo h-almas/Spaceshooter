@@ -1895,6 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   duration: 10
+  message: Cannon!
   weaponPrefab: {fileID: 7375281498649207367, guid: 141a1857a4f032f4291ee8860578f765, type: 3}
 --- !u!1 &7560346387230558616
 GameObject:

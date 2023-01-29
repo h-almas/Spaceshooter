@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   duration: 15
+  message: Burst!
   weaponPrefab: {fileID: 4518696589529309779, guid: 7cefb9cc4c556d44baef0b1b0061292b, type: 3}
 --- !u!1 &7288456061217979003
 GameObject:

@@ -65,7 +65,7 @@ public class WaveManager : MonoBehaviour
             
             if (waveWarning != "")
             {
-                Debug.Log(waveWarning);
+                FindObjectOfType<WarningMessage>().DisplayMessage(waveWarning);
             }
             
             yield return new WaitForSeconds(delayBeforeWaveStart);

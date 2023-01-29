@@ -6,6 +6,7 @@ public class PowerUp : MonoBehaviour
 
     [SerializeField] private float speed = 1.5f;
     [SerializeField] protected float duration = 5f;
+    [SerializeField] protected string message;
     
     private void Update()
     {
