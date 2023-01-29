@@ -1688,7 +1688,8 @@ MonoBehaviour:
   sounds:
   - name: GameOver
     audioClip: {fileID: 8300000, guid: a0eb6a48b0d74a34ab609088c142e9c7, type: 3}
-    volume: 0.4
+    audioMixerGroup: {fileID: 0}
+    volume: 0.6
     loop: 1
     audioSource: {fileID: 0}
 --- !u!4 &1148905285

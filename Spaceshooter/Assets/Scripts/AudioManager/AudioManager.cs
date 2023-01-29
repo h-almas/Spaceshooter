@@ -14,6 +14,7 @@ namespace AudioManager
             {
                 s.audioSource = gameObject.AddComponent<AudioSource>();
                 s.audioSource.clip = s.audioClip;
+                s.audioSource.outputAudioMixerGroup = s.audioMixerGroup;
                 s.audioSource.volume = s.volume;
                 s.audioSource.loop = s.loop;
             }
