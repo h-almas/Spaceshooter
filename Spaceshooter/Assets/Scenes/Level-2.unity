@@ -2413,7 +2413,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3994,7 +3994,7 @@ Transform:
   - {fileID: 1970888348}
   - {fileID: 284729889}
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1389544545
 GameObject:
@@ -5595,8 +5595,8 @@ RectTransform:
   - {fileID: 268646979}
   - {fileID: 1597925479}
   - {fileID: 1438478783}
-  - {fileID: 1387023690}
   - {fileID: 932760551}
+  - {fileID: 1387023690}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
