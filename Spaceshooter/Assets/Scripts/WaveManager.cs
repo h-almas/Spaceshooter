@@ -93,12 +93,6 @@ public class WaveManager : MonoBehaviour
                 {
                     int randomEnemyType = Random.Range(0, enemyPrefabs.Count);
 
-                    //TODO: .cost on non existing object leads to nullreferenceexception. Without the following code on screen power might exceed maxPower
-                    /*while (enemyPrefabs[randomEnemyType].GetComponent<Enemy>().cost + currentPowerOnScreen > maxPowerOnScreen)
-                    {
-                        randomEnemyType = Random.Range(0, enemyPrefabs.Count);
-                    }*/
-
                     Enemy enemy = Instantiate(enemyPrefabs[randomEnemyType]).GetComponent<Enemy>();
                     remaining -= useCount ? 1 : enemy.GetPower();
 

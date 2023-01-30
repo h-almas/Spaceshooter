@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 35
-  speed: 5
-  explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
-  steeringSpeed: 2
-  maxAngle: 80
   hp: 1
+  explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
+  speed: 8
+  steeringSpeed: 3
+  maxAngle: 80

@@ -5078,11 +5078,12 @@ MonoBehaviour:
       delayBeforeWaveWarning: 2
       waveWarning: WAVE 1 INCOMING
       delayBeforeWaveStart: 2
-      useCount: 1
+      useCount: 0
       enemyPrefabs:
       - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
-      wavePower: 0
-      maxPowerOnScreen: 0
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 150
+      maxPowerOnScreen: 20
       enemyCount: 10
       maxEnemiesOnScreen: 3
     - delayBetweenSpawns: 0.75
@@ -5092,31 +5093,22 @@ MonoBehaviour:
       useCount: 0
       enemyPrefabs:
       - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
-      - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
-      wavePower: 200
-      maxPowerOnScreen: 50
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      - {fileID: 5770578389204760733, guid: cdf414eb260136e42ac75bfb92dc21d0, type: 3}
+      wavePower: 150
+      maxPowerOnScreen: 30
       enemyCount: 0
       maxEnemiesOnScreen: 0
-    - delayBetweenSpawns: 0.5
-      delayBeforeWaveWarning: 0
-      waveWarning: 
-      delayBeforeWaveStart: 0
-      useCount: 1
-      enemyPrefabs:
-      - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
-      wavePower: 0
-      maxPowerOnScreen: 0
-      enemyCount: 12
-      maxEnemiesOnScreen: 2
     - delayBetweenSpawns: 1
       delayBeforeWaveWarning: 2
       waveWarning: WAVE 2 INCOMING
       delayBeforeWaveStart: 2
-      useCount: 1
+      useCount: 0
       enemyPrefabs:
       - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
-      wavePower: 0
-      maxPowerOnScreen: 0
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 200
+      maxPowerOnScreen: 50
       enemyCount: 25
       maxEnemiesOnScreen: 5
     - delayBetweenSpawns: 1.25
@@ -5127,19 +5119,23 @@ MonoBehaviour:
       enemyPrefabs:
       - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
       - {fileID: 22709267512060589, guid: cc8a004fae73ae0448bc94445688128d, type: 3}
-      wavePower: 600
-      maxPowerOnScreen: 50
+      - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
+      wavePower: 300
+      maxPowerOnScreen: 60
       enemyCount: 25
       maxEnemiesOnScreen: 5
-    - delayBetweenSpawns: 0.75
-      delayBeforeWaveWarning: 0
-      waveWarning: 
-      delayBeforeWaveStart: 0
-      useCount: 1
+    - delayBetweenSpawns: 1.25
+      delayBeforeWaveWarning: 2
+      waveWarning: Wave 3 incoming!
+      delayBeforeWaveStart: 2
+      useCount: 0
       enemyPrefabs:
       - {fileID: 22709267512060589, guid: cc8a004fae73ae0448bc94445688128d, type: 3}
-      wavePower: 600
-      maxPowerOnScreen: 50
+      - {fileID: 5770578389204760733, guid: cdf414eb260136e42ac75bfb92dc21d0, type: 3}
+      - {fileID: 5770578389204760733, guid: 294ac68f730f4454f9597c55861e2536, type: 3}
+      - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
+      wavePower: 450
+      maxPowerOnScreen: 80
       enemyCount: 10
       maxEnemiesOnScreen: 2
 --- !u!4 &1759574553
