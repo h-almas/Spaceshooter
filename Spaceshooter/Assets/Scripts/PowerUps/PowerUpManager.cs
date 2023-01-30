@@ -26,7 +26,7 @@ public class PowerUpManager : MonoBehaviour
     public void SpawnRandomPowerUp()
     {
         if(powerUps.Length>0)
-            Instantiate(powerUps[Random.Range(0, powerUps.Length)], Camera.main.ViewportToWorldPoint(
+            Instantiate(GetPowerUp(), Camera.main.ViewportToWorldPoint(
                 new Vector3(Random.Range(0.0f, 1.0f), 1.1f, 10)), Quaternion.identity);
     }
     
@@ -38,9 +38,18 @@ public class PowerUpManager : MonoBehaviour
 
     private GameObject GetPowerUp()
     {
-        int nextPowerUpIndex = Random.Range(0, powerUps.Length);
-        if (nextPowerUpIndex == lastPowerUpIndex) 
-            nextPowerUpIndex = (nextPowerUpIndex + 1) % powerUps.Length;
+        int nextPowerUpIndex = 0;
+        float random = 0;
+        do{
+            random = Random.Range(0f, 1f);
+            nextPowerUpIndex = Random.Range(0, powerUps.Length);
+
+        } while (nextPowerUpIndex == lastPowerUpIndex || 
+                 random > 1 / (powerUps[nextPowerUpIndex].GetComponent<PowerUp>().rarity*2));
+
+        lastPowerUpIndex = nextPowerUpIndex;
+
+
         return powerUps[nextPowerUpIndex];
     }
 

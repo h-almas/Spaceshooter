@@ -48,8 +48,8 @@ public class HomingProjectile : MonoBehaviour
             var angle = Vector3.SignedAngle(facing, towardsTarget, Vector3.forward);
             transform.Rotate(Vector3.forward, angle * steeringSpeed * Time.deltaTime);
         }
-
-
+        
+        
         transform.Translate(Vector3.up*(speed*Time.deltaTime), Space.Self);
     }
 
