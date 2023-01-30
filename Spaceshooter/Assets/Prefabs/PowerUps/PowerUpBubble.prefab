@@ -293,6 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  duration: 15
+  duration: 7.5
   message: Shielded!
   shieldBubblePrefab: {fileID: 4097602374868542200, guid: ab34d3e0b2f2c8f48841d3c32ab75a59, type: 3}

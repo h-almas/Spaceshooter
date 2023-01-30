@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerUps;
+    private int lastPowerUpIndex;
     [SerializeField] private float spawnEveryXSeconds = 20f;
     private float timeSinceLastSpawn = 0;
     
@@ -32,7 +33,15 @@ public class PowerUpManager : MonoBehaviour
     public void DropRandomPowerUp(float dropChance, Vector3 positon)
     {
         if(powerUps.Length>0 && Random.Range(0f,1f)<dropChance)
-            Instantiate(powerUps[Random.Range(0, powerUps.Length)], positon, Quaternion.identity);
+            Instantiate(GetPowerUp(), positon, Quaternion.identity);
     }
-    
+
+    private GameObject GetPowerUp()
+    {
+        int nextPowerUpIndex = Random.Range(0, powerUps.Length);
+        if (nextPowerUpIndex == lastPowerUpIndex) 
+            nextPowerUpIndex = (nextPowerUpIndex + 1) % powerUps.Length;
+        return powerUps[nextPowerUpIndex];
+    }
+
 }
