@@ -633,7 +633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c62c5b96f0384792817c708ca0866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missedHits: 0
   missedText: {fileID: 1273327297}
+  missedTextFinal: {fileID: 418576371}
 --- !u!54 &140901452
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1922,7 +1924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c62c5b96f0384792817c708ca0866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missedHits: 0
   missedText: {fileID: 1273327297}
+  missedTextFinal: {fileID: 418576371}
 --- !u!54 &615877136
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3334,7 +3338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c62c5b96f0384792817c708ca0866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missedHits: 0
   missedText: {fileID: 1273327297}
+  missedTextFinal: {fileID: 418576371}
 --- !u!54 &1236574954
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5598,7 +5604,7 @@ RectTransform:
   - {fileID: 932760551}
   - {fileID: 1387023690}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5666,7 +5672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2c62c5b96f0384792817c708ca0866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missedHits: 0
   missedText: {fileID: 1273327297}
+  missedTextFinal: {fileID: 418576371}
 --- !u!54 &1896281953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11178,7 +11186,7 @@ PrefabInstance:
       objectReference: {fileID: 418576371}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3379810980732256745, guid: 162be00de908da8439778a46cc4dd0b3, type: 3}
       propertyPath: m_LocalPosition.x

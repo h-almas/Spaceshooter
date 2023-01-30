@@ -32,6 +32,7 @@ public class PointStar : MonoBehaviour
             Instantiate(disappear, transform.position, transform.rotation);
             Player.Score += 2;
             PlayerBonus.stars++;
+            PlayerPrefs.SetInt("FinalStars", PlayerPrefs.GetInt("FinalStars",0) + 1);
             Destroy(gameObject);
         }
     }

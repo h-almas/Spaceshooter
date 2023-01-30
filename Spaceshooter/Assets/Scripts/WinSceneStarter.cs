@@ -18,10 +18,10 @@ public class WinSceneStarter : MonoBehaviour
 
     void Start()
     {
-        scoreText.text = "SCORE: " + Player.Score;
-        livesText.text = "LIVES: " + Player.Lives;
-        starsText.text = "STARS: " + PlayerBonus.stars;
-        missedHitsText.text = "MISSED HITS: " + MissedEnemies.missedHits;
+        scoreText.text = "SCORE: " + PlayerPrefs.GetInt("FinalScore",0);
+        livesText.text = "LIVES: " + PlayerPrefs.GetInt("Lives", 3);
+        starsText.text = "STARS: " + PlayerPrefs.GetInt("FinalStars", 0);
+        missedHitsText.text = "MISSED HITS: " + PlayerPrefs.GetInt("FinalMissedHits", 0);
         fadeImage.LeanAlpha(0, 2);
         StartCoroutine(FinalStats());
     }

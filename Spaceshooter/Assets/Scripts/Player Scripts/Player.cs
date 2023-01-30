@@ -55,8 +55,7 @@ public class Player : MonoBehaviour
     public TMPro.TextMeshProUGUI livesText;
     public TMPro.TextMeshProUGUI scoreTextFinal;
     public TMPro.TextMeshProUGUI livesTextFinal;
-    public TMPro.TextMeshProUGUI missedHitsFinal;
-    
+
     public enum State
     {
         Playing,
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Score = 0;
-        Lives = 3;
+        Lives = PlayerPrefs.GetInt("Lives", 3);
         _initialRotation = transform.rotation;
         _mainCamera = Camera.main;
         currentProjectile = baseProjectile;
@@ -147,7 +146,6 @@ public class Player : MonoBehaviour
 
             scoreTextFinal.text = "Score " + Score;
             livesTextFinal.text = "Lives: " + Lives;
-            missedHitsFinal.text = "Missed Hits: " + MissedEnemies.missedHits;
         }
     }
 
@@ -172,12 +170,13 @@ public class Player : MonoBehaviour
         collider.enabled = false;
         
         Lives--;
+        PlayerPrefs.GetInt("Lives", Lives);
         yield return new WaitForSeconds(respawnTime);
 
         if (Lives <= 0)
         {
             SceneManager.LoadScene(8);
-            Lives = 3;
+            PlayerPrefs.DeleteKey("Lives");
         }
         else
         {
@@ -220,5 +219,6 @@ public class Player : MonoBehaviour
     public void IncLives()
     {
         Lives++;
+        PlayerPrefs.SetInt("Lives", Lives);
     }
 }

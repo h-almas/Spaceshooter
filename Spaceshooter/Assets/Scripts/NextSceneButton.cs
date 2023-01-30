@@ -7,6 +7,7 @@ public class NextSceneButton : MonoBehaviour
 {
     public void NextScene(int sceneIndex)
     {
+        PlayerPrefs.SetInt("FinalScore", PlayerPrefs.GetInt("FinalScore",0)+ Player.Score);
         SceneManager.LoadScene(sceneIndex);
     }
 }

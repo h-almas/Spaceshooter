@@ -13,6 +13,7 @@ public class WhiteFade : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             fadeImage.LeanAlpha(1, 1);
+            PlayerPrefs.SetInt("FinalScore", PlayerPrefs.GetInt("FinalScore",0) + Player.Score);
             StartCoroutine(Transition());
         }
     }
