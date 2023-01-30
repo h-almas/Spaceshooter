@@ -1052,7 +1052,7 @@ Transform:
   - {fileID: 307947939}
   - {fileID: 366493305}
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &284729888
 GameObject:
@@ -2417,7 +2417,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4384,7 +4384,7 @@ Transform:
   - {fileID: 418576370}
   - {fileID: 90330034}
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438796936
 GameObject:
@@ -4853,7 +4853,7 @@ Transform:
   - {fileID: 897527016}
   - {fileID: 1273327296}
   m_Father: {fileID: 1867797798}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1668503290
 GameObject:
@@ -5076,7 +5076,7 @@ MonoBehaviour:
     waves:
     - delayBetweenSpawns: 0.75
       delayBeforeWaveWarning: 2
-      waveWarning: WAVE 1 INCOMING
+      waveWarning: Wave 1 incoming!
       delayBeforeWaveStart: 2
       useCount: 0
       enemyPrefabs:
@@ -5099,16 +5099,16 @@ MonoBehaviour:
       maxPowerOnScreen: 30
       enemyCount: 0
       maxEnemiesOnScreen: 0
-    - delayBetweenSpawns: 1
+    - delayBetweenSpawns: 0.5
       delayBeforeWaveWarning: 2
-      waveWarning: WAVE 2 INCOMING
+      waveWarning: Wave 2 incoming!
       delayBeforeWaveStart: 2
       useCount: 0
       enemyPrefabs:
       - {fileID: 874690995097941056, guid: 4b56f2e5e3e26934193ba49a224c450d, type: 3}
       - {fileID: 5770578389204760733, guid: 787ccec2de6ab264ea23e30892ad163e, type: 3}
       wavePower: 200
-      maxPowerOnScreen: 50
+      maxPowerOnScreen: 70
       enemyCount: 25
       maxEnemiesOnScreen: 5
     - delayBetweenSpawns: 1.25
@@ -5594,10 +5594,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 932760551}
   - {fileID: 268646979}
   - {fileID: 1597925479}
   - {fileID: 1438478783}
-  - {fileID: 932760551}
   - {fileID: 1387023690}
   m_Father: {fileID: 0}
   m_RootOrder: 4

@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 15
+  damage: 1
 --- !u!82 &1990738081505692966
 AudioSource:
   m_ObjectHideFlags: 0

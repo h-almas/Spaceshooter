@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed;
+    [SerializeField] protected float damage;
     private int hits = 0;
     private int maxHits = 5;
 
@@ -23,7 +24,7 @@ public class Cannon : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().DealDamage(5);
+            other.GetComponent<Enemy>().DealDamage(damage);
             hits++;
             if(hits>=maxHits) 
                 Destroy(gameObject);

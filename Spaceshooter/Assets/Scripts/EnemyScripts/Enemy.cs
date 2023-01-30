@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int power;
-    [SerializeField] protected int hp;
+    [SerializeField] protected float hp;
     protected bool dead = false;
     
     [SerializeField] private GameObject explosionPrefab;
@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
         return power;
     }
 
-    public virtual void DealDamage(int damage)
+    public virtual void DealDamage(float damage)
     {
         if (!dead)
         {

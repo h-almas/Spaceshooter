@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
@@ -6,7 +8,7 @@ public abstract class Weapon : MonoBehaviour
     protected GameObject projectilePrefab;
     [SerializeField] protected float timeBetweenShots;
     protected float timeSinceLastShot;
-    
+
     public virtual void SetTransform(Transform transform)
     {
         weaponTransform = transform;

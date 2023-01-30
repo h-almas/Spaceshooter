@@ -8,6 +8,7 @@ public class HomingProjectile : MonoBehaviour
     [SerializeField] private float speed = 10;
     [SerializeField] private float steeringSpeed = 5;
     [SerializeField] private float maxDistance = 3;
+    [SerializeField] protected float damage;
     private Transform target = null;
     
     
@@ -62,7 +63,7 @@ public class HomingProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().DealDamage(1);
+            other.GetComponent<Enemy>().DealDamage(damage);
             Destroy(gameObject);
         }
         else if (other.CompareTag("EnemyProjectile"))
