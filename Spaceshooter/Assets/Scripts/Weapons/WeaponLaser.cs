@@ -6,12 +6,17 @@ public class WeaponLaser : Weapon
     public GameObject laser;
     private Camera mainCamera;
     private Vector3 playerToMouseOld = Vector3.zero;
+    private Renderer renderer;
+    private Collider collider;
+    private Player player;
     
     private void Awake()
     {
         mainCamera = Camera.main;
         laser = Instantiate(laser);
-
+        renderer = laser.GetComponent<Renderer>();
+        collider = laser.GetComponent<Collider>();
+        player = FindObjectOfType<Player>();
     }
 
     public override void DoCleanUp()
@@ -19,10 +24,24 @@ public class WeaponLaser : Weapon
         Destroy(laser);
     }
 
+    private void Update()
+    {
+        if (player._playerState == Player.State.Explosion || player._playerState == Player.State.Invincible)
+        {
+            renderer.enabled = false;
+            collider.enabled = false;
+        }
+    }
+
     public override void Shoot()
     {
+        if (!renderer.enabled)
+        {
+            renderer.enabled = true;
+            collider.enabled = true;
+        }
+        
         //calculate offset from player
-        //float r = laser.transform.localScale.y;
         float r = .05f;
         Vector3 mousePos = Input.mousePosition;
         mousePos = mainCamera.ScreenToWorldPoint(mousePos);
