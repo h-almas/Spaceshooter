@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc82402a52a021c47bbf42f87bb8f859, type: 2}
+  - {fileID: 2100000, guid: e1cac9f87fda27445ac6a54ade344d63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842e180cc457e2e4bac40ae0004341a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  power: 10
+  hp: 4
+  explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
   minMaxSpeed: {x: 1, y: 3}
   maxRotationSpeed: 100
-  hp: 4
   minMaxScale: {x: 14, y: 16}
-  explosionPrefab: {fileID: 885001950664116621, guid: cbeb732e3b25352418a2b402a08c66bf, type: 3}
-  power: 10
