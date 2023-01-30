@@ -14,39 +14,56 @@ public class VolumeManager : MonoBehaviour
 
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("musicVolume") || !PlayerPrefs.HasKey("fxVolume"))
+        if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume",-6);
-            PlayerPrefs.SetFloat("fxVolume", -4);
-            LoadSettings();
+            LoadSettingsMusic();
         }
         else
         {
-            LoadSettings();
+            LoadSettingsMusic();
+        }
+
+        if (!PlayerPrefs.HasKey("fxVolume"))
+        {
+            PlayerPrefs.SetFloat("fxVolume", -4);
+            LoadSettingsFX();
+        }
+        else
+        {
+            LoadSettingsFX();
         }
     }
 
     public void ChangeMusicVolume(float musicVolume)
     {
         audioMixer.SetFloat("musicVolume", musicVolume);
-        SaveSettings();
+        SaveSettingsMusic();
     }
 
     public void ChangeFXVolume(float fxVolume)
     {
         fxMixer.SetFloat("fxVolume", fxVolume);
-        SaveSettings();
+        SaveSettingsFX();
     }
 
-    private void SaveSettings()
+    private void SaveSettingsMusic()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+    }
+
+    private void LoadSettingsMusic()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+    }
+    
+    private void SaveSettingsFX()
+    {
         PlayerPrefs.SetFloat("fxVolume", fxSlider.value);
     }
 
-    private void LoadSettings()
+    private void LoadSettingsFX()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
         fxSlider.value = PlayerPrefs.GetFloat("fxVolume");
     }
 }
