@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0054672165, g: 0.020076044, b: 0.004604739, a: 1}
+  m_IndirectSpecularColor: {r: 0.0054865433, g: 0.020067977, b: 0.004624783, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4882,7 +4882,7 @@ MonoBehaviour:
   sounds:
   - name: Song2
     audioClip: {fileID: 8300000, guid: 2c2ddb0f87b389c49a2bf9fb5f5e6203, type: 3}
-    audioMixerGroup: {fileID: 0}
+    audioMixerGroup: {fileID: 24300002, guid: 13b89ca86140b344b88b60064d70da70, type: 2}
     volume: 1
     loop: 1
     audioSource: {fileID: 0}
