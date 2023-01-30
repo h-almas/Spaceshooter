@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.024967156, g: 0.022754043, b: 0.070475414, a: 1}
+  m_IndirectSpecularColor: {r: 0.02495846, g: 0.02274444, b: 0.07047759, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5236,7 +5236,7 @@ MonoBehaviour:
     waves:
     - delayBetweenSpawns: 0.5
       delayBeforeWaveWarning: 2
-      waveWarning: WAVE 1 INCOMING
+      waveWarning: Wave 1 incoming!
       delayBeforeWaveStart: 2
       useCount: 1
       enemyPrefabs:
@@ -5261,7 +5261,7 @@ MonoBehaviour:
       maxEnemiesOnScreen: 2
     - delayBetweenSpawns: 0.5
       delayBeforeWaveWarning: 2
-      waveWarning: WAVE 2 INCOMING
+      waveWarning: Wave 2 incoming!
       delayBeforeWaveStart: 2
       useCount: 0
       enemyPrefabs:
