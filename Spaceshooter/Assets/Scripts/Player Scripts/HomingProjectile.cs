@@ -62,7 +62,7 @@ public class HomingProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().GetDamage(1);
+            other.GetComponent<Enemy>().DealDamage(1);
             Destroy(gameObject);
         }
         else if (other.CompareTag("EnemyProjectile"))

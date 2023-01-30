@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
         return power;
     }
 
-    public virtual void GetDamage(int damage)
+    public virtual void DealDamage(int damage)
     {
         if (!dead)
         {

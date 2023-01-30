@@ -9,7 +9,7 @@ public class ShieldBubble : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().GetDamage(5);
+            other.GetComponent<Enemy>().DealDamage(5);
         }
 
         if (other.CompareTag("EnemyProjectile"))

@@ -23,7 +23,7 @@ public class Cannon : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().GetDamage(5);
+            other.GetComponent<Enemy>().DealDamage(5);
             hits++;
             if(hits>=maxHits) 
                 Destroy(gameObject);

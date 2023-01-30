@@ -8,7 +8,7 @@ public class Laser : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().GetDamage(5);
+            other.GetComponent<Enemy>().DealDamage(5);
         }
     }
 }
