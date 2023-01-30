@@ -1181,6 +1181,7 @@ MonoBehaviour:
   speed: 1.5
   duration: 0
   message: Lives UP!
+  rarity: 4
 --- !u!1 &4852671073450366550
 GameObject:
   m_ObjectHideFlags: 0
