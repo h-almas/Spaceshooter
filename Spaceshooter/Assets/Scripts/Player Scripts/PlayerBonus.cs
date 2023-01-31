@@ -24,6 +24,7 @@ public class PlayerBonus : MonoBehaviour
     void Start()
     {
         Player.Score = 0;
+        stars = 0;
         mainCamera = Camera.main;
         _initialRotationBL = transform.rotation;
     }
