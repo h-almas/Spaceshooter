@@ -102,8 +102,6 @@ public class WaveManager : MonoBehaviour
 
             yield return new WaitUntil(() => !FindObjectsOfType<MonoBehaviour>().OfType<Enemy>().Any());
             
-            
-            Debug.Log("Wave completed!");
             hasEnded = true;
         }
 
