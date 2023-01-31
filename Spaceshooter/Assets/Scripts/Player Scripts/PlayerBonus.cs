@@ -42,7 +42,6 @@ public class PlayerBonus : MonoBehaviour
         
         Vector3 positionInViewSpace = mainCamera.WorldToViewportPoint(transform.position);
 
-        Debug.Log(positionInViewSpace);
         
         if (positionInViewSpace.x < .0f)
         {
